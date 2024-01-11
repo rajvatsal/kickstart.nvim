@@ -1,21 +1,21 @@
 return {
 	--Gruvbox colorscheme
-	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ..., lazy = true },
+	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ..., },
 
 	--tokyonight colorscheme
-	{ "folke/tokyonight.nvim",    priority = 1000, lazy = true },
+	{ "folke/tokyonight.nvim",    priority = 1000, },
 
 	-- lunar-vim colorschemes
-	{ "lunarvim/colorschemes",    priority = 1000, lazy = true },
+	{ "lunarvim/colorschemes",    priority = 1000, },
 
 	-- kanagawa
-	{ "rebelot/kanagawa.nvim",    priority = 1000, lazy = true },
+	{ "rebelot/kanagawa.nvim",    priority = 1000, },
 
 	-- latte, frappe, macchiato, mocha
-	{ "catppuccin/catppuccin",    priority = 1000, lazy = true },
+	{ "catppuccin/catppuccin",    priority = 1000, },
 
 	-- Theme inspired by Atom
-	{ 'navarasu/onedark.nvim',    priority = 1000, lazy = true },
+	{ 'navarasu/onedark.nvim',    priority = 1000, },
 
 	--Rosepine (Primeagen)
 	{

@@ -1,1 +1,1 @@
-return { 'BlakeJC94/alpha-nvim-fortune', lazy = true }
+return { 'BlakeJC94/alpha-nvim-fortune', }
