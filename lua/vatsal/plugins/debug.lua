@@ -33,6 +33,10 @@ return {
       -- see mason-nvim-dap README for more information
       handlers = {},
 
+      -- Add these to stop missing fields message
+      MasonNvimDapSettings = {},
+      automatic_installation = false,
+
       -- You'll need to check that you have the required things installed
       -- online, please don't ask me how to install them :)
       ensure_installed = {
