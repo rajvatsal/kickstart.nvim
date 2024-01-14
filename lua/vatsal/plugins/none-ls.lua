@@ -1,6 +1,6 @@
 return {
   'nvimtools/none-ls.nvim',
-  event = { 'BufReadPre', 'BufNewFile' },
+  ft = { 'lua', 'javascript', 'typescript', 'c', 'python', 'rust', 'go', 'zig', 'html', 'css', 'markdown', 'jsx' },
   config = function()
     local null_ls = require('null-ls')
 
