@@ -13,7 +13,13 @@ return {
     -- Adds a number of user-friendly snippets
     'rafamadriz/friendly-snippets',
   },
-  event = { 'BufReadPre', 'BufNewFile' },
+  event = function()
+    if vim.fn.argv(0) == "" then
+      return { 'BufReadPre', 'BufNewFile' }
+    else
+      return { 'InsertEnter' }
+    end
+  end,
   config = function()
     -- [[ Configure nvim-cmp ]]
     -- See `:help cmp`
