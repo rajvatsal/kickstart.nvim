@@ -160,8 +160,6 @@ return {
     dashboard.section.header.val = _ascii_arts['pacman'] -- require("ascii").art.text.slogons['make_cool_stuff']
 
     -- Set menu
-
-    -- Without this the keys won't work
     dashboard.section.buttons.val = {
       dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
       dashboard.button("r", "  Recently used files", ":Telescope oldfiles<CR>"),
