@@ -140,7 +140,10 @@ end
 
 return {
   'goolord/alpha-nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons', config = true },
+  dependencies = {
+    { 'nvim-tree/nvim-web-devicons',  config = true },
+    { 'nvim-telescope/telescope.nvim' },
+  },
   cond = function()
     if vim.fn.argv(0) == "" then
       return true
@@ -157,6 +160,8 @@ return {
     dashboard.section.header.val = _ascii_arts['pacman'] -- require("ascii").art.text.slogons['make_cool_stuff']
 
     -- Set menu
+
+    -- Without this the keys won't work
     dashboard.section.buttons.val = {
       dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
       dashboard.button("r", "  Recently used files", ":Telescope oldfiles<CR>"),
