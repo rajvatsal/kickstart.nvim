@@ -141,6 +141,13 @@ end
 return {
   'goolord/alpha-nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons', config = true },
+  enabled = function()
+    if vim.fn.argv(0) == "" then
+      return true
+    else
+      return false
+    end
+  end,
   event = 'VimEnter',
   cmd = 'Alpha',
   config = function()
