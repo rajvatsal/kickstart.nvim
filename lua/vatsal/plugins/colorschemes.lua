@@ -17,11 +17,14 @@ return {
 	-- Theme inspired by Atom
 	{ 'navarasu/onedark.nvim',    priority = 1000, },
 
+	-- Nightfox
+	{ 'EdenEast/nightfox.nvim',   priority = 1000 },
+
 	--Rosepine (Primeagen)
 	{
 		'rose-pine/neovim',
 		name = 'rose-pine',
 		priority = 1000,
 		lazy = false
-	}
+	},
 }

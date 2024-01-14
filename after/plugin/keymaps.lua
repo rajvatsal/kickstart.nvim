@@ -1,4 +1,4 @@
-local rmv_lines = '<cmd>lua vim.opt.number=false<CR><cmd>lua vim.opt.relativenumber=false<CR>'
+local rmv_lines = '<cmd>lua vim.opt.number=false<CR><cmd>lua vim.opt.relativenumber=false<CR><cmd>set nocursorline<CR>'
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true }) -- Set keymap to exit terminal using 'exit'
 vim.keymap.set('n', '<C-h>', ':bprev<CR>', { noremap = true, silent = true, desc = 'Open previous buffer' })
 vim.keymap.set('n', '<C-l>', ':bnext<CR>', { noremap = true, silent = true, desc = 'Open next buffer' })
