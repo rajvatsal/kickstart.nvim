@@ -141,7 +141,7 @@ end
 return {
   'goolord/alpha-nvim',
   dependencies = {
-    { 'nvim-tree/nvim-web-devicons', config = true },
+    { 'nvim-tree/nvim-web-devicons', opt = true },
   },
   cond = function()
     if vim.fn.argv(0) == "" then
