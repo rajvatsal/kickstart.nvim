@@ -6,3 +6,4 @@ vim.keymap.set('n', '<leader>m', ':cd %:p:h<CR>', { noremap = true, silent = tru
 vim.keymap.set('x', 'p', [["_dp]]) -- Don't update register when you paste over a word
 vim.keymap.set('n', '`', '<cmd>botright split +term | resize 10<CR>' .. rmv_lines, { noremap = true, silent = true })
 vim.keymap.set('t', '`', '<cmd>:q<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'Q', '<cmd>:q<CR>', { noremap = true, silent = true })
