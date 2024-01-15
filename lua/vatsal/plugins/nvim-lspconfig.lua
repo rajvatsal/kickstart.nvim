@@ -91,6 +91,7 @@ return {
           -- diagnostics = { disable = { 'missing-fields' } },
         },
       },
+      eslint = { filetypes = { 'javascript' } },
     }
 
     -- Setup neovim lua configuration
