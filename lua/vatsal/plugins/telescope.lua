@@ -17,6 +17,7 @@ return {
       end,
     },
   },
+  cmd = 'Telescope',
   keys = {
     {
       '<leader>/',
