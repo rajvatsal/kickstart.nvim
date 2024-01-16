@@ -159,8 +159,9 @@ return {
     --[[local handle = assert(io.popen('fortune -s'))
     local fortune = handle:read("*all")
     handle:close()]]
+    vim.api.nvim_set_hl(0, 'header.clr', { fg = '#DB3A34' })
     dashboard.section.footer.val = require('alpha.fortune')()
-    dashboard.section.header.opts.hl = "DevIconScss" -- "DeviconNPMrc"(red)
+    dashboard.section.header.opts.hl = "header.clr"
     dashboard.section.buttons.opts.hl = "Debug"
     dashboard.section.footer.opts.hl = "Comment"
     dashboard.config.opts.noautocmd = true
