@@ -21,7 +21,6 @@ vim.opt.rtp:prepend(lazypath)
 local options = 'vatsal.options.'
 require(options .. 'settings')
 require(options .. 'keymaps')
-require(options .. 'yank-highlight')
 require(options .. 'auto-cmds')
 
 -- Load plugins
