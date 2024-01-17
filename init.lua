@@ -22,6 +22,7 @@ local options = 'vatsal.options.'
 require(options .. 'settings')
 require(options .. 'keymaps')
 require(options .. 'yank-highlight')
+require(options .. 'auto-cmds')
 
 -- Load plugins
 require('lazy').setup('vatsal.plugins', { defaults = { lazy = true } })
