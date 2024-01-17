@@ -2,5 +2,5 @@ return {
   -- "gc" to comment visual regions/lines
   'numToStr/Comment.nvim',
   event = { 'BufReadPre', 'InsertEnter' },
-  opts = {}
+  config = true
 }

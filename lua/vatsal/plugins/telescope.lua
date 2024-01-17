@@ -19,68 +19,17 @@ return {
   },
   cmd = 'Telescope',
   keys = {
-    {
-      '<leader>/',
-      -- See `:help telescope.builtin`
-      function()
-        -- You can pass additional configuration to telescope to change theme, layout, etc.
-        require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-          winblend = 10,
-          previewer = false,
-        })
-      end,
-      desc = '[/] Fuzzily search in current buffer'
-    },
-    {
-      '<leader>?',
-      '<cmd>Telescope oldfiles<CR>',
-      desc = '[?] Find recently opened files'
-    },
-    {
-      '<leader>sf',
-      '<cmd>Telescope find_files<CR>',
-      desc = '[S]earch [F]iles'
-    },
-    {
-      '<leader><space>',
-      '<cmd>Telescope buffers<CR>',
-      desc = 'Find exisiting buffers'
-    },
-    {
-      '<leader>ss',
-      '<cmd>Telescope builtin<CR>',
-      desc = '[S]earch [S]elect Telescope'
-    },
-    {
-      '<leader>gf',
-      '<cmd>Telescope git_files<CR>',
-      desc = 'Search [G]it [F]iles'
-    },
-    {
-      '<leader>sh',
-      '<cmd>Telescope help_tags<CR>',
-      desc = '[S]earch [H]elp'
-    },
-    {
-      '<leader>sw',
-      '<cmd>Telescope grep_string<CR>',
-      desc = '[S]earch current [W]ord'
-    },
-    {
-      '<leader>sg',
-      '<cmd>Telescope live_grep<CR>',
-      desc = '[S]earch by [G]rep',
-    },
-    {
-      '<leader>sd',
-      '<cmd>Telescope diagnostics<CR>',
-      desc = '[S]earch [D]iagnostics'
-    },
-    {
-      '<leader>sr',
-      '<cmd>Telescope resume<CR>',
-      desc = '[S]earch [R]esume'
-    },
+    { '<leader>/',       desc = '[/] Fuzzily search in current buffer' },
+    { '<leader>?',       desc = '[?] Find recently opened files' },
+    { '<leader>sf',      desc = '[S]earch [F]iles' },
+    { '<leader><space>', desc = 'Find exisiting buffers' },
+    { '<leader>ss',      desc = '[S]earch [S]elect Telescope' },
+    { '<leader>gf',      desc = 'Search [G]it [F]iles' },
+    { '<leader>sh',      desc = '[S]earch [H]elp' },
+    { '<leader>sw',      desc = '[S]earch current [W]ord' },
+    { '<leader>sg',      desc = '[S]earch by [G]rep', },
+    { '<leader>sd',      desc = '[S]earch [D]iagnostics' },
+    { '<leader>sr',      desc = '[S]earch [R]esume' },
   },
 
   config = function()
@@ -144,7 +93,15 @@ return {
         prompt_title = 'Live Grep in Open Files',
       }
     end
-    vim.keymap.set('n', '<leader>s/', telescope_live_grep_open_files, { desc = '[S]earch [/] in Open Files' })
-    vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
+    vim.keymap.set('n', '<leader>s/', telescope_live_grep_open_files)
+    vim.keymap.set('n', '<leader>ss', require('telescope.builtin').builtin)
+    vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files)
+    vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files)
+    vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags)
+    vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string)
+    vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep)
+    vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>')
+    vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics)
+    vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume)
   end,
 }

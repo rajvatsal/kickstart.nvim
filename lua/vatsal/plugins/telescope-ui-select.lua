@@ -1,6 +1,6 @@
 return {
   'nvim-telescope/telescope-ui-select.nvim',
-  keys = { { '<leader>ca', vim.lsp.buf.code_action, desc = '[C]ode [A]ction' } },
+  keys = { { '<leader>ca', desc = '[C]ode [A]ction' } },
   config = function()
     require('telescope').setup({
       extensions = {
@@ -10,6 +10,7 @@ return {
         }
       }
     })
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
     require('telescope').load_extension('ui-select')
   end,
 }
