@@ -12,13 +12,20 @@ return {
 	{ "rebelot/kanagawa.nvim",    priority = 1000, },
 
 	-- latte, frappe, macchiato, mocha
-	{ "catppuccin/nvim",          priority = 1000, },
+	{
+		"catppuccin/nvim",
+		priority = 1000,
+		lazy = false,
+		config = function()
+			vim.cmd('colorscheme catppuccin')
+		end,
+	},
 
 	-- Theme inspired by Atom
-	{ 'navarasu/onedark.nvim',    priority = 1000, },
+	{ 'navarasu/onedark.nvim',  priority = 1000, },
 
 	-- Nightfox
-	{ 'EdenEast/nightfox.nvim',   priority = 1000 },
+	{ 'EdenEast/nightfox.nvim', priority = 1000 },
 
 	--Rosepine (Primeagen)
 	{
