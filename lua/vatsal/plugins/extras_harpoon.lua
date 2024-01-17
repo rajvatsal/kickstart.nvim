@@ -14,7 +14,7 @@ return {
 		local keymap = vim.keymap.set
 		local opts = { noremap = true, silent = true }
 
-		keymap("n", "<S-m>", "<cmd>lua require('vatsal.plugins.extras-harpoon').mark_file()<cr>", opts)
+		keymap("n", "<S-m>", "<cmd>lua require('vatsal.plugins.extras_harpoon').mark_file()<cr>", opts)
 		keymap("n", "<TAB>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, opts)
 	end,
 	mark_file = function()
