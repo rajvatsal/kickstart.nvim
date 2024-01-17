@@ -7,7 +7,7 @@ return {
   event = { 'BufReadPre', 'BufNewFile' },
   main = 'ibl',
   opts = {
-    scope = { highlight = { 'RainbowDelimiterRed' }, char = '▎', show_start = true },
+    scope = { highlight = { 'RainbowDelimiterRed' }, char = '▎', show_start = false, show_end = false },
     exclude = {
       buftypes = { 'dashboard', 'alpha', 'help', 'lazy', 'mason' },
     },
