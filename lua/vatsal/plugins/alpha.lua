@@ -158,7 +158,7 @@ return {
     -- Set footer
     vim.api.nvim_set_hl(0, 'header.clr', { fg = '#DB3A34' })
     dashboard.section.footer.val = require('alpha.fortune')()
-    dashboard.section.header.opts.hl = "header.clr"
+    dashboard.section.header.opts.hl = "Statement"
     dashboard.section.buttons.opts.hl = "Debug"
     dashboard.section.footer.opts.hl = "Comment"
     dashboard.config.opts.noautocmd = true

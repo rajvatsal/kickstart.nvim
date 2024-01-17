@@ -7,6 +7,7 @@ return {
   event = 'VeryLazy',
   opts = {
     options = {
+      theme = 'dracula',
       disabled_filetypes = {
         'NvimTree',
       },
