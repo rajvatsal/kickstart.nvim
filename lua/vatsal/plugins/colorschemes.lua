@@ -17,7 +17,8 @@ return {
 		priority = 1000,
 		lazy = false,
 		config = function()
-			vim.cmd('colorscheme catppuccin')
+			vim.cmd(
+				'colorscheme catppuccin')
 		end,
 	},
 
@@ -28,12 +29,9 @@ return {
 	{ 'EdenEast/nightfox.nvim', priority = 1000 },
 
 	--Rosepine (Primeagen)
-	{
-		'rose-pine/neovim',
-		name = 'rose-pine',
-		priority = 1000,
-	},
+	{ 'rose-pine/neovim',       name = 'rose-pine', priority = 1000, },
 
 	-- Dracula
-	{ 'Mofiqul/dracula.nvim', priority = 1000, }
+	{ 'Mofiqul/dracula.nvim',   priority = 1000, },
+
 }
