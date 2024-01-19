@@ -158,11 +158,12 @@ return {
     }
 
     -- Set footer
+    -- dashboard.section.footer.val = require('alpha.fortune')()
+
     vim.api.nvim_set_hl(0, 'header.clr', { fg = '#D3B4F8' })
-    dashboard.section.footer.val = require('alpha.fortune')()
-    dashboard.section.header.opts.hl = "header.clr"
+    dashboard.section.header.opts.hl = "String"
     dashboard.section.buttons.opts.hl = "Debug"
-    dashboard.section.footer.opts.hl = "Comment"
+    -- dashboard.section.footer.opts.hl = "comment"
     dashboard.config.opts.noautocmd = true
 
     vim.cmd [[autocmd User AlphaReady echo 'ready']]
