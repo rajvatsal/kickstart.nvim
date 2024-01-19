@@ -18,7 +18,7 @@ return {
 	{ 'navarasu/onedark.nvim',     priority = 1000, },
 
 	-- Nightfox
-	{ 'EdenEast/nightfox.nvim',    priority = 1000 },
+	{ 'EdenEast/nightfox.nvim',    priority = 1000, },
 
 	--Rosepine (Primeagen)
 	{ 'rose-pine/neovim',          priority = 1000, name = 'rose-pine', },
@@ -33,13 +33,13 @@ return {
 	{ 'sainnhe/sonokai',           priority = 1000, },
 
 	-- Everforest
-	{ 'sainnhe/everforest',        priority = 1000 },
+	{ 'sainnhe/everforest',        priority = 1000, },
 
 	-- OnedarkPro
-	{ 'olimorris/onedarkpro.nvim', priority = 1000 },
+	{ 'olimorris/onedarkpro.nvim', priority = 1000, },
 
 	-- Monokai
-	{ 'ku1ik/vim-monokai',         priority = 1000 },
+	{ 'ku1ik/vim-monokai',         priority = 1000, },
 
 	-- Material
 	{
@@ -52,4 +52,6 @@ return {
 			vim.cmd('colorscheme material')
 		end,
 	},
+
+	{ 'nyoom-engineering/oxocarbon.nvim', priority = 1000, },
 }

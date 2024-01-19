@@ -5,6 +5,7 @@ return {
   },
   event = 'VeryLazy',
   opts = function(_, opts)
+    require('material')
     opts.options = {
       theme = 'material',
       disabled_filetypes = {
