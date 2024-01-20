@@ -61,6 +61,9 @@ return {
           normal = { c = { fg = colors.fg, bg = colors.bg } },
           inactive = { c = { fg = colors.fg, bg = colors.bg } },
         },
+        disabled_filetypes = {
+          'NvimTree',
+        },
       },
       sections = {
         -- these are to remove the defaults
