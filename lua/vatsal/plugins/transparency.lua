@@ -4,4 +4,5 @@ return {
 		'TransparentEnable',
 		'TransparentToggle',
 	},
+	init = function() vim.cmd('TransparentEnable') end,
 }
