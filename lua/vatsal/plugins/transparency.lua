@@ -1,8 +1,8 @@
 return {
 	'xiyaowong/transparent.nvim',
+	lazy = false,
 	cmd = {
 		'TransparentEnable',
 		'TransparentToggle',
 	},
-	init = function() vim.cmd('TransparentEnable') end,
 }
