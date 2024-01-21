@@ -98,6 +98,29 @@ local _ascii_arts = {
     [[  ╚════██║██║   ██║██║     ██║██╔══╝     ██║     ╚██╔╝  ]],
     [[  ███████║╚██████╔╝╚██████╗██║███████╗   ██║      ██║   ]],
     [[  ╚══════╝ ╚═════╝  ╚═════╝╚═╝╚══════╝   ╚═╝      ╚═╝   ]],
+  },
+  haloween = {
+    [[                ████                      ]],
+    [[               █░░███                     ]],
+    [[               █░░████                    ]],
+    [[                ███▒██     ████████       ]],
+    [[      ████████     █▒█  ████▒▒▒▒▒▒████    ]],
+    [[    ███▒▒▒▒▒▒████████████░░████▒▒▒▒▒███   ]],
+    [[  ██▒▒▒▒░▒▒████░░██░░░░██░░░░░█▒▒▒▒▒▒▒███ ]],
+    [[ ██▒▒░░░░▒██░░░░░█▒░░░░░██▒░░░░░░░▒▒▒▒▒▒█ ]],
+    [[██▒░░░░░▒░░░░░░░░░▒░░░░░░░▒▒░░░░░░░▒▒▒▒▒██]],
+    [[█░░░░░░▒░░░██░░░░░░░░░░░░░██░░░░░░░░▒▒▒▒▒█]],
+    [[█░░░░░░░░█▒▒███░░░░░░░░░█▒▒███░░░░░░░▒▒▒▒█]],
+    [[█░░░░░░░████████░░░░░░░████████░░░░░░▒▒▒▒█]],
+    [[█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒█]],
+    [[██░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░█░▒▒▒▒█]],
+    [[ █░░░░██░█░░░░░░░░░░░░░░░░░░░░░░░███▒▒▒▒▒█]],
+    [[ █▒▒░░░░█████░░░█░░░░██░░░██░░████░▒▒▒▒▒▒█]],
+    [[ ██▒▒░░░░░█████████████████████░░░▒▒▒▒▒▒██]],
+    [[  ██▒▒▒▒░░░░░██░░░███░░░██░░░█░░░▒▒▒▒▒▒██ ]],
+    [[   ███▒▒▒░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒█████  ]],
+    [[     ███▒▒▒▒▒▒░░░░░░░░░░░░░▒▒▒▒▒▒████     ]],
+    [[        ██████████████████████████        ]],
   }
 }
 
@@ -146,7 +169,7 @@ return {
     local alpha = require("alpha")
     local dashboard = require("alpha.themes.dashboard")
 
-    dashboard.section.header.val = _ascii_arts['f_society'] -- require("ascii").art.text.slogons['make_cool_stuff']
+    dashboard.section.header.val = _ascii_arts['haloween'] -- require("ascii").art.text.slogons['make_cool_stuff']
 
     -- Set menu
     dashboard.section.buttons.val = {
@@ -160,8 +183,8 @@ return {
     -- Set footer
     -- dashboard.section.footer.val = require('alpha.fortune')()
 
-    vim.api.nvim_set_hl(0, 'header.clr', { fg = '#D3B4F8' })
-    dashboard.section.header.opts.hl = "String"
+    vim.api.nvim_set_hl(0, 'header.clr', { fg = '#f78c6c' })
+    dashboard.section.header.opts.hl = "header.clr"
     dashboard.section.buttons.opts.hl = "Debug"
     -- dashboard.section.footer.opts.hl = "comment"
     dashboard.config.opts.noautocmd = true
