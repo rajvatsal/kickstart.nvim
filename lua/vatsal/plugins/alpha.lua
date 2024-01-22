@@ -162,7 +162,7 @@ return {
     local alpha = require("alpha")
     local dashboard = require("alpha.themes.dashboard")
 
-    dashboard.section.header.val = _ascii_arts['doom']
+    dashboard.section.header.val = _ascii_arts['f_society']
 
     -- Set menu
     dashboard.section.buttons.val = {
@@ -176,10 +176,10 @@ return {
     -- Set footer
     -- dashboard.section.footer.val = require('alpha.fortune')()
 
-    vim.api.nvim_set_hl(0, 'header.clr', { fg = '#f78c6c' })
+    vim.api.nvim_set_hl(0, 'footer.clr', { fg = '#ffff00' })
     dashboard.section.header.opts.hl = "String"
     dashboard.section.buttons.opts.hl = "Debug"
-    dashboard.section.footer.opts.hl = "String"
+    dashboard.section.footer.opts.hl = "white"
     dashboard.config.opts.noautocmd = true
 
     vim.cmd [[autocmd User AlphaReady echo 'ready']]
