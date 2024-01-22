@@ -211,7 +211,7 @@ return {
 
     ins_right {
       'branch',
-      icon = '',
+      icon = require('vatsal.misc.icons').git.Branch,
       color = { fg = colors.violet, gui = 'bold' },
     }
 
