@@ -186,11 +186,28 @@ return {
     vim.api.nvim_set_hl(0, 'header.clr', { fg = '#f78c6c' })
     dashboard.section.header.opts.hl = "header.clr"
     dashboard.section.buttons.opts.hl = "Debug"
-    -- dashboard.section.footer.opts.hl = "comment"
+    dashboard.section.footer.opts.hl = "String"
     dashboard.config.opts.noautocmd = true
 
     vim.cmd [[autocmd User AlphaReady echo 'ready']]
 
     alpha.setup(dashboard.opts)
+
+    vim.api.nvim_create_autocmd("User", {
+      once = true,
+      pattern = "LazyVimStarted",
+      callback = function()
+        local stats = require("lazy").stats()
+        local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+        dashboard.section.footer.val = "⚡Neovim loaded "
+            .. stats.loaded
+            .. "/"
+            .. stats.count
+            .. " plugins in "
+            .. ms
+            .. "ms"
+        pcall(vim.cmd.AlphaRedraw)
+      end,
+    })
   end
 }
