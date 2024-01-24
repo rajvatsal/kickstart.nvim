@@ -7,7 +7,7 @@ return {
   build = ':TSUpdate',
   event = { 'BufReadPost', 'BufNewFile' },
   config = function()
-    require 'nvim-treesitter.install'.compilers = { 'zig' }
+    require('nvim-treesitter.install').compilers = { 'zig', 'gcc' }
 
     -- [[ Configure Treesitter ]]
     -- See `:help nvim-treesitter`
@@ -27,7 +27,7 @@ return {
         modules = {},
         highlight = {
           enable = true,
-          additional_vim_regex_highlighting = false
+          additional_vim_regex_highlighting = false,
         },
         indent = { enable = true },
         incremental_selection = {
