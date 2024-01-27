@@ -6,7 +6,7 @@ return {
     opts.sources = {
       null_ls.builtins.formatting.stylua,
       null_ls.builtins.formatting.prettier.with {
-        disabled_filetypes = { 'javascript', 'typescript', 'json' }, -- Use biome
+        disabled_filetypes = { 'javascript', 'typescript', 'json', 'lua' }, -- Use biome, stylua
       },
       null_ls.builtins.formatting.biome,
     }
