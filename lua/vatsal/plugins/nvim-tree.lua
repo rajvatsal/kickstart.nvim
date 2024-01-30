@@ -3,7 +3,7 @@ return {
   lazy = 'true',
   cmd = { 'NvimTreeToggle', 'NvimTreeOpen' },
   keys = {
-    { '<S-t>', '<cmd>NvimTreeToggle .<CR>', { noremap = true, silent = true } }
+    { '<S-n>', '<cmd>NvimTreeToggle .<CR>', { noremap = true, silent = true } }
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
