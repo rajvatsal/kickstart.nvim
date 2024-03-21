@@ -41,9 +41,22 @@ return {
     end, { desc = 'Open harpoon window' })
   end,
   mark_file = function()
-    (function()
-      require('harpoon'):list():append()
-    end)()
-    vim.notify ' 󱡅  marked file'
+    local harpoon = require("harpoon")
+    local matched = false
+    for _, v in pairs(harpoon:list().items) do
+      local harpooned = v.value
+      local current_file = vim.fn.expand("%")
+      if (harpooned:match(current_file)) then
+        matched = true
+        break
+      end
+    end
+    if matched then
+      harpoon:list():remove();
+      vim.notify(' 󱡅  unmarked file')
+    else
+      harpoon:list():append()
+      vim.notify ' 󱡅  marked file'
+    end
   end,
 }
