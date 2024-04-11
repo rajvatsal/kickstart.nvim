@@ -55,7 +55,7 @@ return {
       harpoon:list():remove();
       vim.notify(' 󱡅  unmarked file')
     else
-      harpoon:list():append()
+      harpoon:list():add()
       vim.notify ' 󱡅  marked file'
     end
   end,
