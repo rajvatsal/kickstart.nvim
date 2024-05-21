@@ -5,12 +5,31 @@ return {
   'neovim/nvim-lspconfig',
   dependencies = {
     -- Automatically install LSPs to stdpath for neovim
-    { 'williamboman/mason.nvim', config = true, cmd = 'Mason' },
+    {
+      'williamboman/mason.nvim',
+      config = true,
+      cmd = 'Mason',
+    },
+    {
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
+      opts = {
+        ensure_installed = {
+          'eslint_d', -- Ensure eslint_d is installed
+          'prettier',
+          'stylua',
+        },
+        auto_update = true,
+      },
+      config = function(_, opts)
+        require('mason-tool-installer').setup(opts)
+        vim.cmd 'MasonToolsInstall'
+      end,
+    },
     'williamboman/mason-lspconfig.nvim',
 
     -- Useful status updates for LSP
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    { 'j-hui/fidget.nvim',       opts = {} },
+    { 'j-hui/fidget.nvim', opts = {} },
 
     -- Additional lua configuration, makes nvim stuff amazing!
     'folke/neodev.nvim',
@@ -91,9 +110,7 @@ return {
           -- diagnostics = { disable = { 'missing-fields' } },
         },
       },
-      eslint = {
-        filetypes = { 'javascript', 'typescript' },
-      },
+      eslint = {},
     }
 
     -- Setup neovim lua configuration
