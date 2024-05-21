@@ -6,7 +6,7 @@ return {
     { '<S-m>', desc = 'Add file to harpoon' },
     { '<TAB>', desc = 'Toggle harpoon' },
   },
-  config = function()
+  config = function(plug)
     -- Set telescope as UI for harpoon
     local harpoon = require 'harpoon'
     harpoon:setup {}
@@ -14,7 +14,7 @@ return {
     local keymap = vim.keymap.set
     local opts = { noremap = true, silent = true }
 
-    keymap('n', '<S-m>', "<cmd>lua require('vatsal.plugins.extras_harpoon').mark_file()<cr>", opts)
+    keymap('n', '<S-m>', plug.mark_file, opts)
 
     -- basic telescope configuration
     local conf = require('telescope.config').values
@@ -41,19 +41,19 @@ return {
     end, { desc = 'Open harpoon window' })
   end,
   mark_file = function()
-    local harpoon = require("harpoon")
+    local harpoon = require 'harpoon'
     local matched = false
     for _, v in pairs(harpoon:list().items) do
       local harpooned = v.value
-      local current_file = vim.fn.expand("%")
-      if (harpooned:match(current_file)) then
+      local current_file = vim.fn.expand '%'
+      if harpooned:match(current_file) then
         matched = true
         break
       end
     end
     if matched then
-      harpoon:list():remove();
-      vim.notify(' 󱡅  unmarked file')
+      harpoon:list():remove()
+      vim.notify ' 󱡅  unmarked file'
     else
       harpoon:list():add()
       vim.notify ' 󱡅  marked file'
