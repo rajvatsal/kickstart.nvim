@@ -98,7 +98,7 @@ return {
       clangd = {},
       -- gopls = {},
       -- pyright = {},
-      tsserver = {},
+      -- tsserver = {},
       rust_analyzer = {},
       html = { filetypes = { 'html', 'twig', 'hbs' } },
 
@@ -110,7 +110,10 @@ return {
           -- diagnostics = { disable = { 'missing-fields' } },
         },
       },
-      eslint = {},
+      -- eslint = {},
+      biome = {
+        filetypes = { 'javascript', 'typescript', 'typescriptreact' },
+      },
     }
 
     -- Setup neovim lua configuration
