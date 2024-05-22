@@ -14,8 +14,8 @@ return {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       opts = {
         ensure_installed = {
-          'eslint_d', -- Ensure eslint_d is installed
-          'prettier',
+          -- 'eslint_d',
+          'prettierd',
           'stylua',
         },
         auto_update = true,
@@ -110,10 +110,8 @@ return {
           -- diagnostics = { disable = { 'missing-fields' } },
         },
       },
-      -- eslint = {},
-      biome = {
-        filetypes = { 'javascript', 'typescript', 'typescriptreact' },
-      },
+      eslint = {},
+      biome = {},
     }
 
     -- Setup neovim lua configuration
