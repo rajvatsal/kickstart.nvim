@@ -27,7 +27,7 @@ require(options .. 'auto-cmds')
 require('lazy').setup('vatsal.plugins', {
   defaults = { lazy = true },
   install = { colorscheme = { 'catppuccin' } },
-  checker = { enabled = true },
+  -- checker = { enabled = true },
   performance = {
     rtp = {
       -- disable some rtp plugins
