@@ -7,7 +7,32 @@ return {
     -- Automatically install LSPs to stdpath for neovim
     {
       'williamboman/mason.nvim',
-      config = true,
+      opts = {
+        ui = {
+          icons = {
+            package_installed = '',
+            package_pending = '➜',
+            package_uninstalled = '',
+          },
+        },
+      },
+      dependencies = {
+        {
+          'stevearc/dressing.nvim',
+          init = function()
+            ---@diagnostic disable-next-line: duplicate-set-field
+            vim.ui.select = function(...)
+              require('lazy').load { plugins = { 'dressing.nvim' } }
+              return vim.ui.select(...)
+            end
+            ---@diagnostic disable-next-line: duplicate-set-field
+            vim.ui.input = function(...)
+              require('lazy').load { plugins = { 'dressing.nvim' } }
+              return vim.ui.input(...)
+            end
+          end,
+        },
+      },
       cmd = 'Mason',
     },
     {
