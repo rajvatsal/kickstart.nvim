@@ -17,9 +17,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Load options
-local options = 'vatsal.options.'
-require(options .. 'settings')
+-- Load config
+local options = 'vatsal.config.'
+require(options .. 'options')
 require(options .. 'keymaps')
 require(options .. 'auto-cmds')
 
