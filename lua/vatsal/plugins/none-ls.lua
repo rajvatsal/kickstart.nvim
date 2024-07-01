@@ -10,7 +10,7 @@ return {
     opts.sources = {
       null_ls.formatting.stylua,
     }
-    if vim.fn.has 'windows' then
+    if vim.fn.has 'win32' == 1 then
       table.insert(opts.sources, null_ls.formatting.prettierd)
     else
       table.insert(
