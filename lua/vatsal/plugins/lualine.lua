@@ -4,14 +4,14 @@ return {
     'nvim-tree/nvim-web-devicons',
   },
   event = 'VeryLazy',
-  opts = function(_, opts)
-    opts.options = {
+  opts = {
+    options = {
       theme = 'material',
       disabled_filetypes = {
         'NvimTree',
       },
-    }
-  end,
+    },
+  },
   -- config = function()
   --   -- Eviline config for lualine
   --   -- Author: shadmansaleh
