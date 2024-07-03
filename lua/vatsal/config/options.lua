@@ -64,3 +64,5 @@ vim.opt.cursorline = true
 vim.opt.showmode = false
 vim.opt.virtualedit = 'block'
 vim.opt.scrolloff = 10
+vim.opt.splitbelow = true
+vim.opt.splitright = true
