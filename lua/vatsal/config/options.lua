@@ -63,3 +63,4 @@ vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.showmode = false
 vim.opt.virtualedit = 'block'
+vim.opt.scrolloff = 10
