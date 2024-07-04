@@ -15,8 +15,6 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open float
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- [[Mine]]
-local rmv_lines = '<cmd>lua vim.wo.number=false<CR><cmd>lua vim.wo.relativenumber=false<CR>'
-vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true }) -- Set keymap to exit terminal using 'exit'
 vim.keymap.set('n', '<C-h>', ':bprev<CR>', { noremap = true, silent = true, desc = 'Open previous buffer' })
 vim.keymap.set('n', '<C-l>', ':bnext<CR>', { noremap = true, silent = true, desc = 'Open next buffer' })
 vim.keymap.set(
@@ -26,7 +24,6 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "[M]ove to current [B]uffer's path" }
 )
 vim.keymap.set('x', 'p', [["_dp]]) -- Don't update register when you paste over a word
-vim.keymap.set('n', '`', '<cmd>ToggleTerm .| resize 10<CR>' .. rmv_lines, { noremap = true, silent = true })
 vim.keymap.set('t', '`', '<cmd>:q<CR>', { noremap = true, silent = true })
 
 -- move to the root of file sytem in js projects typically where package.json exists
