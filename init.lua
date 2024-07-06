@@ -1,5 +1,7 @@
 -- See `:help mapleader`
 -- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+local config = 'vatsal'
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -18,24 +20,20 @@ end
 ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- Load config
-local options = 'vatsal.config.'
-require(options .. 'options')
-require(options .. 'keymaps')
-require(options .. 'auto-cmds')
+-- Load settings
+require(config .. '.settings.main')
 
 -- Load plugins
-require('lazy').setup('vatsal.plugins', {
+require('lazy').setup(config .. '.plugins', {
   defaults = { lazy = true },
-  install = { colorscheme = { 'material-deep-ocean' } },
   performance = {
     rtp = {
       -- disable some rtp plugins
       disabled_plugins = {
         'gzip',
-        -- "matchit",
-        -- "matchparen",
-        -- "netrwPlugin",
+        'matchit',
+        'matchparen',
+        'netrwPlugin',
         'tarPlugin',
         'tohtml',
         'tutor',
