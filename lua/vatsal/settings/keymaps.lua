@@ -20,7 +20,7 @@ vim.keymap.set('n', '<C-l>', ':bnext<CR>', { noremap = true, silent = true, desc
 vim.keymap.set(
   'n',
   '<leader>mb',
-  ':cd %:p:h<CR>:echo "Moved to current buffer path"<CR>',
+  ':cd %:p:h<CR>:echo "Move to Current [B]uffer"<CR>',
   { noremap = true, silent = true, desc = "[M]ove to current [B]uffer's path" }
 )
 vim.keymap.set('x', 'p', [["_dp]]) -- Don't update register when you paste over a word
@@ -29,23 +29,23 @@ vim.keymap.set('t', '`', '<cmd>:q<CR>', { noremap = true, silent = true })
 -- move to the root of file sytem in js projects typically where package.json exists
 local function gotoroot()
   local path = vim.api.nvim_buf_get_name(0)
-  local jsonPath
+  local gitPath
   while path and path ~= vim.fn.fnamemodify(path, ':p:h:h') do
     if vim.fn.has 'win32' == 1 then
-      jsonPath = path .. '\\package.json'
+      gitPath = path .. '\\.git'
     else
-      jsonPath = path .. '/package.json'
+      gitPath = path .. '/.git'
     end
 
-    if vim.fn.filereadable(jsonPath) == 1 then
+    if vim.fn.isdirectory(gitPath) == 1 then
       vim.cmd('cd ' .. path)
-      print('Move to root of the file ' .. path)
+      print('Moved to: ' .. path)
       return
     end
     path = vim.fn.fnamemodify(path, ':h')
   end
 
-  print 'package.json not found in the file tree'
+  print 'No git directory found'
 end
 
-vim.keymap.set('n', '<leader>jsr', gotoroot, { silent = true, noremap = true, desc = 'Move to [J]ava[S]cript [R]oot' })
+vim.keymap.set('n', '<leader>mG', gotoroot, { silent = true, noremap = true, desc = '[Move] to [G]it Root' })
