@@ -9,6 +9,7 @@ return {
       ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
       ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
       ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
+      ['<leader>m'] = { name = '[M]ove', _ = 'which_key_ignore' },
       ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
       ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
       ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
@@ -21,5 +22,5 @@ return {
       ['<leader>'] = { name = 'VISUAL <leader>' },
       ['<leader>h'] = { 'Git [H]unk' },
     }, { mode = 'v' })
-  end
+  end,
 }
