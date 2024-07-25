@@ -1,3 +1,54 @@
+local function split(str)
+  local sub_strings = {}
+  for i in string.gmatch(str, '%S+') do
+    table.insert(sub_strings, i)
+  end
+  return sub_strings
+end
+
+local function tableHas(table, item)
+  for i = 1, #table do
+    if table[i] == item then
+      return true
+    end
+  end
+  return false
+end
+
+-- [[ Functions ]]
+local function build_javascript()
+  print 'Building...'
+  local handle = io.popen 'git branch'
+  local branches = handle:read '*a'
+  handle:close()
+  if not tableHas(split(branches), 'build') then
+    vim.cmd '!git branch build'
+  end
+  vim.cmd 'silent !git checkout build && git merge main && npm run build && git add . && git commit -m "chore: build" && npm run deploy && git checkout main'
+  print 'Built Project '
+end
+
+local function gotoroot()
+  local path = vim.api.nvim_buf_get_name(0)
+  local gitPath
+  while path and path ~= vim.fn.fnamemodify(path, ':p:h:h') do
+    if vim.fn.has 'win32' == 1 then
+      gitPath = path .. '\\.git'
+    else
+      gitPath = path .. '/.git'
+    end
+
+    if vim.fn.isdirectory(gitPath) == 1 then
+      vim.cmd('cd ' .. path)
+      print('Moved to: ' .. path)
+      return
+    end
+    path = vim.fn.fnamemodify(path, ':h')
+  end
+
+  print 'No git directory found'
+end
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -27,25 +78,6 @@ vim.keymap.set('x', 'p', [["_dp]]) -- Don't update register when you paste over 
 vim.keymap.set('t', '`', '<cmd>:q<CR>', { noremap = true, silent = true })
 
 -- move to the root of file sytem in js projects typically where package.json exists
-local function gotoroot()
-  local path = vim.api.nvim_buf_get_name(0)
-  local gitPath
-  while path and path ~= vim.fn.fnamemodify(path, ':p:h:h') do
-    if vim.fn.has 'win32' == 1 then
-      gitPath = path .. '\\.git'
-    else
-      gitPath = path .. '/.git'
-    end
-
-    if vim.fn.isdirectory(gitPath) == 1 then
-      vim.cmd('cd ' .. path)
-      print('Moved to: ' .. path)
-      return
-    end
-    path = vim.fn.fnamemodify(path, ':h')
-  end
-
-  print 'No git directory found'
-end
-
 vim.keymap.set('n', '<leader>mG', gotoroot, { silent = true, noremap = true, desc = '[Move] to [G]it Root' })
+vim.keymap.set('n', '<leader>bj', build_javascript,
+  { silent = true, noremap = true, desc = '[B]uild [J]avascript Project' })
