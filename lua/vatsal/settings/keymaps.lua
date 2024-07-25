@@ -17,15 +17,24 @@ end
 
 -- [[ Functions ]]
 local function build_javascript()
-  print 'Building...'
   local handle = io.popen 'git branch'
   local branches = handle:read '*a'
   handle:close()
+  local checkout_build
   if not tableHas(split(branches), 'build') then
-    vim.cmd '!git branch build'
+    checkout_build = 'git checkout -b build && '
+  else
+    checkout_build = 'git checkout build && '
   end
-  vim.cmd 'silent !git checkout build && git merge main && npm run build && git add . && git commit -m "chore: build" && npm run deploy && git checkout main'
-  print 'Built Project '
+
+  local command = checkout_build ..
+  'git merge main && npm run build && git add . && git commit -m "chore: build" && npm run deploy && git checkout main'
+
+  vim.fn.jobstart(command, {
+    on_stdout = function() --[[ parameters: job_id, data, event ]]
+      print 'Built Project '
+    end,
+  })
 end
 
 local function gotoroot()
