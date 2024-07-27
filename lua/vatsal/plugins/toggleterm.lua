@@ -2,6 +2,7 @@ return {
   'akinsho/toggleterm.nvim',
   version = '*',
   keys = '<C-t>',
+  cmd = 'TermExec',
   opts = {
     size = 12,
     open_mapping = '<C-t>',

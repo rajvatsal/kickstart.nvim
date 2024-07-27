@@ -22,19 +22,20 @@ local function build_javascript()
   handle:close()
   local checkout_build
   if not tableHas(split(branches), 'build') then
-    checkout_build = 'git checkout -b build && '
+    checkout_build = [[git checkout -b build]]
   else
-    checkout_build = 'git checkout build && '
+    checkout_build = [[git checkout build]]
   end
 
-  local command = checkout_build ..
-  'git merge main && npm run build && git add . && git commit -m "chore: build" && npm run deploy && git checkout main'
+  vim.cmd([[TermExec cmd="]] .. checkout_build .. '"')
+  vim.cmd [[2TermExec cmd="git merge main && npm run build && git add . && git commit -m build && npm run deploy && git checkout main"]]
 
-  vim.fn.jobstart(command, {
-    on_stdout = function() --[[ parameters: job_id, data, event ]]
-      print 'Built Project '
-    end,
-  })
+  -- print 'Building...'
+  -- vim.fn.jobstart(command, {
+  --   on_exit = function() --[[ parameters: job_id, data, event ]]
+  --     print 'Built Project '
+  --   end,
+  -- })
 end
 
 local function gotoroot()
