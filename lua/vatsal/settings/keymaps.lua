@@ -78,16 +78,14 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- [[Mine]]
 vim.keymap.set('n', '<C-h>', ':bprev<CR>', { noremap = true, silent = true, desc = 'Open previous buffer' })
 vim.keymap.set('n', '<C-l>', ':bnext<CR>', { noremap = true, silent = true, desc = 'Open next buffer' })
-vim.keymap.set(
-  'n',
-  '<leader>mb',
-  ':cd %:p:h<CR>:echo "Move to Current [B]uffer"<CR>',
-  { noremap = true, silent = true, desc = "[M]ove to current [B]uffer's path" }
-)
 vim.keymap.set('x', 'p', [["_dp]]) -- Don't update register when you paste over a word
 vim.keymap.set('t', '`', '<cmd>:q<CR>', { noremap = true, silent = true })
 
--- move to the root of file sytem in js projects typically where package.json exists
+-- move commands
+vim.keymap.set('n', '<leader>mb', ':cd %:p:h<CR>',
+  { noremap = true, silent = true, desc = "[M]ove to current [B]uffer's path" })
 vim.keymap.set('n', '<leader>mg', gotoroot, { silent = true, noremap = true, desc = '[M]ove to [G]it Root' })
+
+-- build commands
 vim.keymap.set('n', '<leader>bj', build_javascript,
   { silent = true, noremap = true, desc = '[B]uild [J]avascript Project' })
