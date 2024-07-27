@@ -88,6 +88,6 @@ vim.keymap.set('x', 'p', [["_dp]]) -- Don't update register when you paste over 
 vim.keymap.set('t', '`', '<cmd>:q<CR>', { noremap = true, silent = true })
 
 -- move to the root of file sytem in js projects typically where package.json exists
-vim.keymap.set('n', '<leader>mg', gotoroot, { silent = true, noremap = true, desc = '[Move] to [G]it Root' })
+vim.keymap.set('n', '<leader>mg', gotoroot, { silent = true, noremap = true, desc = '[M]ove to [G]it Root' })
 vim.keymap.set('n', '<leader>bj', build_javascript,
   { silent = true, noremap = true, desc = '[B]uild [J]avascript Project' })
