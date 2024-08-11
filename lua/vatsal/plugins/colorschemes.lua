@@ -61,7 +61,8 @@ return {
     config = function(_, opts)
       require('material').setup(opts)
       -- vim.g.material_style = 'deep ocean'
-      vim.cmd.colorscheme 'material-deep-ocean'
+      -- vim.cmd.colorscheme 'material-deep-ocean'
+      vim.cmd.colorscheme 'retrobox'
     end,
   },
 
