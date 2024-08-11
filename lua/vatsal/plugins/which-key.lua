@@ -1,5 +1,4 @@
 return {
-  -- Useful plugin to show you pending keybinds.
   'folke/which-key.nvim',
   event = 'VeryLazy',
   opts = { icons = { mappings = false, rules = false } },
@@ -24,5 +23,6 @@ return {
       { '<leader>',  group = 'VISUAL <leader>' },
       { '<leader>h', group = 'Git [H]unk',     mode = 'v' },
     }
+    wk.setup(opts)
   end,
 }
