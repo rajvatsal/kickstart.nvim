@@ -1,6 +1,6 @@
 return {
   'stevearc/oil.nvim',
-  keys = { { '<leader>o', '<cmd>Oil --float<CR>', desc = '[O]il' } },
+  keys = { { '<leader>to', '<cmd>Oil --float<CR>', desc = 'toggle oil' } },
   opts = {
     float = {
       max_height = 20,

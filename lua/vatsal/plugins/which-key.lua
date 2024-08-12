@@ -20,8 +20,8 @@ return {
     -- register which-key VISUAL mode
     -- required for visual <leader>hs (hunk stage) to work
     wk.add {
-      { '<leader>',  group = 'VISUAL <leader>' },
-      { '<leader>h', group = 'Git [H]unk',     mode = 'v' },
+      { '<leader>', group = 'VISUAL <leader>' },
+      { '<leader>h', group = 'Git [H]unk', mode = 'v' },
     }
     wk.setup(opts)
   end,

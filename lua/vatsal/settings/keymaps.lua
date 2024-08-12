@@ -82,10 +82,8 @@ vim.keymap.set('x', 'p', [["_dp]]) -- Don't update register when you paste over 
 vim.keymap.set('t', '`', '<cmd>:q<CR>', { noremap = true, silent = true })
 
 -- move commands
-vim.keymap.set('n', '<leader>mb', ':cd %:p:h<CR>',
-  { noremap = true, silent = true, desc = "[M]ove to current [B]uffer's path" })
+vim.keymap.set('n', '<leader>mb', ':cd %:p:h<CR>', { noremap = true, silent = true, desc = "[M]ove to current [B]uffer's path" })
 vim.keymap.set('n', '<leader>mg', gotoroot, { silent = true, noremap = true, desc = '[M]ove to [G]it Root' })
 
 -- build commands
-vim.keymap.set('n', '<leader>bj', build_javascript,
-  { silent = true, noremap = true, desc = '[B]uild [J]avascript Project' })
+vim.keymap.set('n', '<leader>bj', build_javascript, { silent = true, noremap = true, desc = '[B]uild [J]avascript Project' })
