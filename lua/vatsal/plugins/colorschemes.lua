@@ -65,4 +65,5 @@ return {
   },
 
   { 'nyoom-engineering/oxocarbon.nvim', priority = 1000 },
+  { 'projekt0n/github-nvim-theme', priority = 1000 },
 }
