@@ -3,16 +3,16 @@ return {
   { 'ellisonleao/gruvbox.nvim', priority = 1000 },
 
   --tokyonight colorscheme
-  { 'folke/tokyonight.nvim',    priority = 1000 },
+  { 'folke/tokyonight.nvim', priority = 1000 },
 
   -- lunar-vim colorschemes
-  { 'lunarvim/colorschemes',    priority = 1000 },
+  { 'lunarvim/colorschemes', priority = 1000 },
 
   -- kanagawa
-  { 'rebelot/kanagawa.nvim',    priority = 1000 },
+  { 'rebelot/kanagawa.nvim', priority = 1000 },
 
   -- latte, frappe, macchiato, mocha
-  { 'catppuccin/nvim',          priority = 1000 },
+  { 'catppuccin/nvim', priority = 1000 },
 
   -- Theme inspired by Atom
   {
@@ -35,22 +35,22 @@ return {
   { 'EdenEast/nightfox.nvim', priority = 1000 },
 
   --Rosepine (Primeagen)
-  { 'rose-pine/neovim',       priority = 1000, name = 'rose-pine' },
+  { 'rose-pine/neovim', priority = 1000, name = 'rose-pine' },
 
   -- Dracula
-  { 'Mofiqul/dracula.nvim',   priority = 1000 },
+  { 'Mofiqul/dracula.nvim', priority = 1000 },
 
   -- Edge
-  { 'sainnhe/edge',           priority = 1000 },
+  { 'sainnhe/edge', priority = 1000 },
 
   -- Sonokai
-  { 'sainnhe/sonokai',        priority = 1000 },
+  { 'sainnhe/sonokai', priority = 1000 },
 
   -- Everforest
-  { 'sainnhe/everforest',     priority = 1000 },
+  { 'sainnhe/everforest', priority = 1000 },
 
   -- Monokai
-  { 'ku1ik/vim-monokai',      priority = 1000 },
+  { 'ku1ik/vim-monokai', priority = 1000 },
 
   -- Material
   {
@@ -65,6 +65,6 @@ return {
   },
 
   { 'nyoom-engineering/oxocarbon.nvim', priority = 1000 },
-  { 'projekt0n/github-nvim-theme',      priority = 1000 },
-  { 'fcancelinha/nordern.nvim',         priority = 1000, branch = 'master' },
+  { 'projekt0n/github-nvim-theme', priority = 1000 },
+  { 'fcancelinha/nordern.nvim', priority = 1000, branch = 'master' },
 }
