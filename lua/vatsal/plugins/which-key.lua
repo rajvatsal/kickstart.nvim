@@ -10,7 +10,7 @@ return {
       { '<leader>d', group = '[D]ocument' },
       { '<leader>g', group = '[G]it' },
       { '<leader>m', group = '[M]ove' },
-      { '<leader>b', group = '[B]uild' },
+      { '<leader>p', group = '[P]ackage' },
       { '<leader>h', group = 'Git [H]unk' },
       { '<leader>r', group = '[R]ename' },
       { '<leader>s', group = '[S]earch' },
