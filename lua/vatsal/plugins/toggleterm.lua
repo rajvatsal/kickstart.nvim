@@ -9,7 +9,19 @@ return {
     direction = 'float',
     auto_scroll = true,
     float_opts = {
-      winblend = 10,
+      border = 'curved',
     },
+    highlights = {
+      NormalFloat = {
+        guibg = '#1e222a',
+      },
+      FloatBorder = {
+        guibg = '#1e222a', --'#191d24',
+        guifg = '#191d24',
+      },
+    },
+    autochdir = true,
+    shade_terminals = false,
+    shell = 'bash.exe',
   },
 }
