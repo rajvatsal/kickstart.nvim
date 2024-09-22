@@ -34,6 +34,17 @@ return {
       },
     }
 
+    dap.configurations.cpp = {
+      {
+        type = 'gdb',
+        request = 'launch',
+        program = '${file}',
+        MIMode = 'gdb',
+        miDebuggerPath = '/usr/bin/gdb',
+        name = 'Cpp linux (single file)',
+      },
+    }
+
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
@@ -53,6 +64,7 @@ return {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
         'codelldb',
+        'gdb',
       },
     }
 
