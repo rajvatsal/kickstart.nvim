@@ -22,6 +22,6 @@ return {
     },
     autochdir = true,
     shade_terminals = false,
-    shell = 'bash',
+    shell = 'tmux',
   },
 }
