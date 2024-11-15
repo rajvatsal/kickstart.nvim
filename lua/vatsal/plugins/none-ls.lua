@@ -1,25 +1,25 @@
+local biome = { filetypes = { 'javascript', 'javascriptreact', 'jsx', 'tsx', 'typescript', 'json', 'grpahql', 'css' } }
+
 return {
   'nvimtools/none-ls.nvim',
   dependencies = {
     'nvimtools/none-ls-extras.nvim',
   },
-  ft = { 'lua', 'javascript', 'typescript', 'c', 'python', 'rust', 'go', 'zig', 'html', 'css', 'markdown', 'jsx' },
-  opts = function(_, opts)
-    local null_ls = require 'null-ls.builtins'
+  event = { 'BufReadPre', 'BufNewFile' },
+  opts = {},
+  config = function(_, opts)
+    local nls = require 'null-ls.builtins'
 
     opts.sources = {
-      null_ls.formatting.stylua,
+      nls.formatting.stylua,
+      nls.formatting.biome.with(biome),
     }
+
     if vim.fn.has 'win32' == 1 then
-      table.insert(opts.sources, null_ls.formatting.prettierd)
-    else
-      table.insert(
-        opts.sources,
-        null_ls.formatting.prettierd.with {
-          disabled_filetypes = { 'javascript', 'typescript', 'typescriptreact', 'jsx', 'tsx' },
-        }
-      )
-      table.insert(opts.sources, null_ls.formatting.biome)
+      table.insert(opts.sources, nls.formatting.prettierd)
+      table.insert(opts.source, nls.diagonstics.eslint_d)
     end
+
+    require('null-ls').setup(opts)
   end,
 }

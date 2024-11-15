@@ -10,7 +10,7 @@ return {
       opts = {
         ui = {
           icons = {
-            package_installed = '',
+            package_installed = '',
             package_pending = '➜',
             package_uninstalled = '',
           },
@@ -39,7 +39,7 @@ return {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       opts = {
         ensure_installed = {
-          -- 'eslint_d',
+          'eslint_d',
           'prettierd',
           'stylua',
         },
@@ -135,7 +135,6 @@ return {
           -- diagnostics = { disable = { 'missing-fields' } },
         },
       },
-      eslint = {},
       biome = {},
     }
 
