@@ -84,8 +84,10 @@ vim.keymap.set('n', '<leader>ta', '<cmd>KickstartFormatToggle<CR>',
   { noremap = true, silent = true, desc = 'toggle autoformat' })
 
 -- move commands
-vim.keymap.set('n', '<leader>mb', ':cd %:p:h<CR>',
-  { noremap = true, silent = true, desc = "[M]ove to current [B]uffer's path" })
+vim.keymap.set('n', '<leader>mb', function()
+  vim.cmd 'cd %:p:h'
+  print('Moved to: ' .. vim.fn.expand '%:p:h')
+end, { noremap = true, silent = true, desc = "[M]ove to current [B]uffer's path" })
 vim.keymap.set('n', '<leader>mg', gotoroot, { silent = true, noremap = true, desc = '[M]ove to [G]it Root' })
 
 -- build commands
