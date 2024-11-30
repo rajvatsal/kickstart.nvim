@@ -67,3 +67,4 @@ vim.opt.scrolloff = 10
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.laststatus = 0
+vim.keymap.set('n', '<C-i>', '<C-i>', { noremap = true, silent = true })

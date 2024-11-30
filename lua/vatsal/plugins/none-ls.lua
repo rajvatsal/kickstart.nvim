@@ -1,4 +1,5 @@
-local biome = { filetypes = { 'javascript', 'javascriptreact', 'jsx', 'tsx', 'typescript', 'json', 'grpahql', 'css' } }
+local biome = { filetypes = { 'javascript', 'javascriptreact', 'tsx', 'typescript', 'json', 'grpahql', 'css' } }
+local prettierd = { filetypes = { 'jsx' } }
 
 return {
   'nvimtools/none-ls.nvim',
@@ -13,6 +14,7 @@ return {
     opts.sources = {
       nls.formatting.stylua,
       nls.formatting.biome.with(biome),
+      nls.formatting.prettierd.with(prettierd),
     }
 
     if vim.fn.has 'win32' == 1 then
