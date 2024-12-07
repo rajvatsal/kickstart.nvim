@@ -1,5 +1,5 @@
 local biome = { filetypes = { 'javascript', 'javascriptreact', 'tsx', 'typescript', 'json', 'grpahql', 'css' } }
-local prettierd = { filetypes = { 'jsx' } }
+local prettierd = { filetypes = { 'jsx', 'scss', 'sass' } }
 
 return {
   'nvimtools/none-ls.nvim',
@@ -12,6 +12,7 @@ return {
     local nls = require 'null-ls.builtins'
 
     opts.sources = {
+      nls.diagnostics.stylelint,
       nls.formatting.stylua,
       nls.formatting.biome.with(biome),
       nls.formatting.prettierd.with(prettierd),
