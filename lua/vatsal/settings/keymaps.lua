@@ -59,6 +59,21 @@ local function gotoroot()
   print 'No git directory found'
 end
 
+_G.HighlightStatus = true
+local function toggleHighlight()
+  if HighlightStatus then
+    HighlightStatus = false
+    vim.cmd 'LspStop'
+    vim.cmd 'syntax off'
+    vim.cmd 'TSBufDisable highlight'
+  else
+    HighlightStatus = true
+    vim.cmd 'LspStart'
+    vim.cmd 'syntax on'
+    vim.cmd 'TSBufEnable highlight'
+  end
+end
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -84,6 +99,7 @@ vim.keymap.set('x', 'p', [["_dp]]) -- Don't update register when you paste over 
 vim.keymap.set('t', '`', '<cmd>:q<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>ta', '<cmd>KickstartFormatToggle<CR>',
   { noremap = true, silent = true, desc = 'toggle autoformat' })
+vim.keymap.set('n', '<leader>th', toggleHighlight, { desc = 'toggle syntax highlight', silent = true })
 
 -- move commands
 vim.keymap.set('n', '<leader>mb', function()
