@@ -1,5 +1,5 @@
-local biome = { filetypes = { 'javascript', 'javascriptreact', 'tsx', 'typescript', 'json', 'grpahql', 'css' } }
-local prettierd = { filetypes = { 'jsx', 'scss', 'sass' } }
+local biome = { filetypes = { 'javascript', 'json', 'grpahql' } }
+local prettierd = { filetypes = { 'javascriptreact', 'typescriptreact', 'jsx', 'scss', 'sass', 'css', 'tsx' } }
 
 return {
   'nvimtools/none-ls.nvim',

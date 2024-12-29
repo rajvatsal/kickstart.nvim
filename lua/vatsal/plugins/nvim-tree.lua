@@ -1,6 +1,7 @@
 return {
   'nvim-tree/nvim-tree.lua',
   lazy = 'true',
+  enabled = false,
   cmd = { 'NvimTreeToggle', 'NvimTreeOpen' },
   keys = {
     { '<leader>tt', '<cmd>NvimTreeToggle .<CR>', { noremap = true, silent = true }, desc = 'toggle file tree' },

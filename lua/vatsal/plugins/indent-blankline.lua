@@ -12,4 +12,11 @@ return {
       buftypes = { 'dashboard', 'alpha', 'help', 'lazy', 'mason' },
     },
   },
+  config = function(_, opts)
+    -- You can set custom hilight like this
+    -- vim.api.nvim_set_hl(0, 'indent-line', { bg = 'none', fg = '#891919' })
+    opts.scope.highlight = { 'RainbowDelimiterRed' }
+
+    require('ibl').setup(opts)
+  end,
 }
