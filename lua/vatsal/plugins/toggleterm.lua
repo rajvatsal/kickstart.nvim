@@ -13,15 +13,16 @@ return {
     },
     highlights = {
       NormalFloat = {
-        guibg = '#1e222a',
+        -- guibg = '#000000',
       },
       FloatBorder = {
-        guibg = '#1e222a', --'#191d24',
-        guifg = '#191d24',
+        -- guibg = '#000000',
+        guifg = '#494949',
       },
     },
     autochdir = true,
-    shade_terminals = false,
+    shade_terminals = true,
+
     shell = 'tmux',
   },
 }

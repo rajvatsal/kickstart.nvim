@@ -1,6 +1,5 @@
 return {
-  --Monochrome
-  --
+  --Monochromes
   {
     'kdheepak/monochrome.nvim',
     lazy = false,
