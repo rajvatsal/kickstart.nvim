@@ -1,7 +1,5 @@
 -- See `:help mapleader`
 -- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-local config = 'vatsal'
-
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -20,28 +18,8 @@ end
 ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- Load settings
-require(config .. '.settings.main')
-
--- Load plugins
-require('lazy').setup(config .. '.plugins', {
-  defaults = { lazy = true },
-  performance = {
-    rtp = {
-      -- disable some rtp plugins
-      disabled_plugins = {
-        -- 'gzip',
-        -- 'matchit',
-        -- 'matchparen',
-        -- 'netrwPlugin',
-        -- 'tarPlugin',
-        -- 'tohtml',
-        'tutor',
-        -- 'zipPlugin',
-      },
-    },
-  },
-})
+-- load config
+require 'vatsal'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
