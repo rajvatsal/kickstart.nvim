@@ -1,69 +1,29 @@
-return {
-  --Monochromes
+local active_colorscheme_name = 'monochrome'
+
+local colorschemes = {
+  'kdheepak/monochrome.nvim',
+  'ellisonleao/gruvbox.nvim',
+  'folke/tokyonight.nvim',
+  'lunarvim/colorschemes',
+  'rebelot/kanagawa.nvim',
+  'catppuccin/nvim',
+  'EdenEast/nightfox.nvim',
+  'Mofiqul/dracula.nvim',
+  'sainnhe/edge',
+  'sainnhe/sonokai',
+  'sainnhe/everforest',
+  'ku1ik/vim-monokai',
+  'nyoom-engineering/oxocarbon.nvim',
+  'projekt0n/github-nvim-theme',
   {
-    'kdheepak/monochrome.nvim',
-    lazy = false,
-    priority = 1000,
+    'rose-pine/neovim',
     config = function()
-      vim.cmd.colorscheme 'monochrome'
+      vim.opt.cursorline = true
+      vim.cmd.colorscheme 'rose-pine-dawn'
     end,
   },
-  --Gruvbox colorscheme
-  { 'ellisonleao/gruvbox.nvim', priority = 1000 },
-
-  --tokyonight colorscheme
-  { 'folke/tokyonight.nvim', priority = 1000 },
-
-  -- lunar-vim colorschemes
-  { 'lunarvim/colorschemes', priority = 1000 },
-
-  -- kanagawa
-  { 'rebelot/kanagawa.nvim', priority = 1000 },
-
-  -- latte, frappe, macchiato, mocha
-  { 'catppuccin/nvim', priority = 1000 },
-
-  -- Theme inspired by Atom
-  {
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    opts = {
-      style = 'darker',
-      lualine = {
-        transparent = false,
-      },
-    },
-    config = function(_, opts)
-      require('onedark').setup(opts)
-      vim.cmd.colorscheme 'onedark'
-    end,
-  },
-
-  -- Nightfox
-  { 'EdenEast/nightfox.nvim', priority = 1000 },
-
-  --Rosepine (Primeagen)
-  { 'rose-pine/neovim', priority = 1000, name = 'rose-pine' },
-
-  -- Dracula
-  { 'Mofiqul/dracula.nvim', priority = 1000 },
-
-  -- Edge
-  { 'sainnhe/edge', priority = 1000 },
-
-  -- Sonokai
-  { 'sainnhe/sonokai', priority = 1000 },
-
-  -- Everforest
-  { 'sainnhe/everforest', priority = 1000 },
-
-  -- Monokai
-  { 'ku1ik/vim-monokai', priority = 1000 },
-
-  -- Material
   {
     'marko-cerovac/material.nvim',
-    priority = 1000,
     opts = { lualine_style = 'stealth' },
     config = function(_, opts)
       require('material').setup(opts)
@@ -71,15 +31,62 @@ return {
       vim.cmd.colorscheme 'material-deep-ocean'
     end,
   },
-
-  { 'nyoom-engineering/oxocarbon.nvim', priority = 1000 },
-  { 'projekt0n/github-nvim-theme', priority = 1000 },
-  { 'fcancelinha/nordern.nvim', priority = 1000, branch = 'master' },
+  { 'fcancelinha/nordern.nvim', branch = 'master' },
+  -- {
+  --   'navarasu/onedarknvim',
+  --   opts = {
+  --     style = 'darker',
+  --     lualine = {
+  --       transparent = false,
+  --     },
+  --   },
+  --   config = function(_, opts)
+  --     require('onedark').setup(opts)
+  --     vim.cmd.colorscheme 'onedark'
+  --   end,
+  -- },
   {
     'AlexvZyl/nordic.nvim',
-    priority = 1000,
     config = function()
       require('nordic').load()
     end,
   },
 }
+
+for i, v in ipairs(colorschemes) do
+  local val = type(v) == 'string' and v or v[1]
+  local isActive = string.find(string.gsub(val, '-', ''), string.gsub(active_colorscheme_name, '-', ''))
+
+  if not (isActive == nil) then
+    local active_colorscheme
+
+    if type(v) == 'string' then
+      active_colorscheme = {
+        v,
+        lazy = false,
+        priority = 1000,
+        config = function()
+          local ok = pcall(vim.cmd.colorscheme, active_colorscheme_name)
+
+          if not ok then
+            error "Couldn't apply colorscheme"
+          end
+
+          vim.cmd.colorscheme(active_colorscheme_name)
+        end,
+      }
+    else
+      active_colorscheme = v
+      active_colorscheme.priority = 1000
+      active_colorscheme.lazy = false
+
+      active_colorscheme.config = active_colorscheme.config or function()
+        vim.cmd.colorscheme(v.name or active_colorscheme_name)
+      end
+    end
+
+    colorschemes[i] = active_colorscheme
+  end
+end
+
+return colorschemes
