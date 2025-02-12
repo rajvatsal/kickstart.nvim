@@ -19,7 +19,25 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- load config
-require 'vatsal'
+local plugins = require 'vatsal'
 
+require('lazy').setup(plugins, {
+  defaults = { lazy = true },
+  performance = {
+    rtp = {
+      -- disable some rtp plugins
+      disabled_plugins = {
+        -- 'gzip',
+        -- 'matchit',
+        -- 'matchparen',
+        -- 'netrwPlugin',
+        -- 'tarPlugin',
+        -- 'tohtml',
+        'tutor',
+        -- 'zipPlugin',
+      },
+    },
+  },
+})
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
