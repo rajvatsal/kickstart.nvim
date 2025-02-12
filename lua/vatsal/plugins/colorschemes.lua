@@ -1,4 +1,4 @@
-local active_colorscheme_name = 'monochrome'
+local active_colorscheme_name = 'zaibatsu'
 
 local colorschemes = {
   'kdheepak/monochrome.nvim',
@@ -17,6 +17,7 @@ local colorschemes = {
   'projekt0n/github-nvim-theme',
   {
     'rose-pine/neovim',
+    name = 'rosepine',
     config = function()
       vim.opt.cursorline = true
       vim.cmd.colorscheme 'rose-pine-dawn'
@@ -54,7 +55,7 @@ local colorschemes = {
 }
 
 for i, v in ipairs(colorschemes) do
-  local val = type(v) == 'string' and v or v[1]
+  local val = type(v) == 'string' and v or (v.name or v[1])
   local isActive = string.find(string.gsub(val, '-', ''), string.gsub(active_colorscheme_name, '-', ''))
 
   if not (isActive == nil) then
@@ -86,6 +87,10 @@ for i, v in ipairs(colorschemes) do
     end
 
     colorschemes[i] = active_colorscheme
+  end
+
+  if isActive == nil then
+    vim.cmd.colorscheme(active_colorscheme_name)
   end
 end
 
