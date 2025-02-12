@@ -1,4 +1,4 @@
-local active_colorscheme_name = 'zaibatsu'
+local active_colorscheme_name = 'a^'
 
 local colorschemes = {
   'kdheepak/monochrome.nvim',
@@ -87,10 +87,6 @@ for i, v in ipairs(colorschemes) do
     end
 
     colorschemes[i] = active_colorscheme
-  end
-
-  if isActive == nil then
-    vim.cmd.colorscheme(active_colorscheme_name)
   end
 end
 
