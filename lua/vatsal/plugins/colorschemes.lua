@@ -1,4 +1,4 @@
-local active_colorscheme_name = 'a^'
+local active_colorscheme_name = 'gruvbox'
 
 local colorschemes = {
   'kdheepak/monochrome.nvim',
@@ -86,6 +86,7 @@ for i, v in ipairs(colorschemes) do
       end
     end
 
+    vim.cmd.colorscheme 'morning'
     colorschemes[i] = active_colorscheme
   end
 end
