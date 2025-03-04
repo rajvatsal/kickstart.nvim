@@ -1,9 +1,14 @@
-local active_colorscheme_name = 'gruvbox'
+local active_colorscheme_name = 'tokyonight'
 
 local colorschemes = {
   'kdheepak/monochrome.nvim',
   'ellisonleao/gruvbox.nvim',
-  'folke/tokyonight.nvim',
+  {
+    'folke/tokyonight.nvim',
+    config = function()
+      vim.cmd.colorscheme 'tokyonight-night'
+    end,
+  },
   'lunarvim/colorschemes',
   'rebelot/kanagawa.nvim',
   'catppuccin/nvim',
@@ -86,7 +91,6 @@ for i, v in ipairs(colorschemes) do
       end
     end
 
-    vim.cmd.colorscheme 'morning'
     colorschemes[i] = active_colorscheme
   end
 end
