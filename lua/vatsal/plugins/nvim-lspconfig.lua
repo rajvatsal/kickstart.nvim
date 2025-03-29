@@ -121,9 +121,7 @@ return {
     --  define the property 'filetypes' to the map in question.
     local servers = {
       clangd = {},
-      -- gopls = {},
-      -- pyright = {},
-      -- tsserver = {},
+      tsserver = {},
       rust_analyzer = {},
       html = { filetypes = { 'html', 'twig', 'hbs' } },
 
@@ -135,7 +133,6 @@ return {
           -- diagnostics = { disable = { 'missing-fields' } },
         },
       },
-      biome = {},
     }
 
     -- Setup neovim lua configuration
