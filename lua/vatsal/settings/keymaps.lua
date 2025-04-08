@@ -97,8 +97,7 @@ vim.keymap.set('n', '<C-h>', ':bprev<CR>', { noremap = true, silent = true, desc
 vim.keymap.set('n', '<C-l>', ':bnext<CR>', { noremap = true, silent = true, desc = 'Open next buffer' })
 vim.keymap.set('x', 'p', [["_dp]]) -- Don't update register when you paste over a word
 vim.keymap.set('t', '`', '<cmd>:q<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<leader>ta', '<cmd>KickstartFormatToggle<CR>',
-  { noremap = true, silent = true, desc = 'toggle autoformat' })
+vim.keymap.set('n', '<leader>ta', '<cmd>KickstartFormatToggle<CR>', { noremap = true, silent = true, desc = 'toggle autoformat' })
 vim.keymap.set('n', '<leader>th', toggleHighlight, { desc = 'toggle syntax highlight', silent = true })
 
 -- move commands
@@ -109,5 +108,10 @@ end, { noremap = true, silent = true, desc = "[M]ove to current [B]uffer's path"
 vim.keymap.set('n', '<leader>mg', gotoroot, { silent = true, noremap = true, desc = '[M]ove to [G]it Root' })
 
 -- build commands
-vim.keymap.set('n', '<leader>pj', build_javascript,
-  { silent = true, noremap = true, desc = '[P]ackage [J]avascript Project' })
+vim.keymap.set('n', '<leader>pj', build_javascript, { silent = true, noremap = true, desc = '[P]ackage [J]avascript Project' })
+
+-- get highlight group under cursor
+vim.keymap.set('n', '<C-h>', function()
+  local result = vim.treesitter.get_captures_at_cursor(0)
+  print(vim.inspect(result))
+end, { noremap = true, silent = false })
