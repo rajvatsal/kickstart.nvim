@@ -121,7 +121,7 @@ return {
     --  define the property 'filetypes' to the map in question.
     local servers = {
       clangd = {},
-      tsserver = {},
+      ts_ls = {},
       rust_analyzer = {},
       html = { filetypes = { 'html', 'twig', 'hbs' } },
 

@@ -1,6 +1,22 @@
-local active_colorscheme_name = 'tokyonight'
+local active_colorscheme_name = 'komau'
 
 local colorschemes = {
+  'ntk148v/komau.vim',
+  {
+    'kvrohit/rasmus.nvim',
+    config = function()
+      vim.g.rasmus_italic_functions = true
+      vim.g.rasmus_bold_functions = true
+      vim.g.rasmus_variant = 'monochrome'
+    end,
+  },
+  {
+    'Alligator/accent.vim',
+    config = function()
+      vim.g.accent_colour = 'red'
+      vim.g.accent_darken = true
+    end,
+  },
   'kdheepak/monochrome.nvim',
   'ellisonleao/gruvbox.nvim',
   {
