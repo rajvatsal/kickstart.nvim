@@ -6,6 +6,7 @@
 -- be extended to other languages as well. That's why it's called
 -- kickstart.nvim and not kitchen-sink.nvim ;)
 
+local masonPkg_path = '/home/vatsalc/.local/share/nvim/mason/packages'
 return {
   'mfussenegger/nvim-dap',
   lazy = false,
@@ -31,6 +32,27 @@ return {
         program = '${file}',
         goPath = '/usr/bin/go',
         name = 'delve',
+      },
+    }
+
+    require('dap').adapters['pwa-node'] = {
+      type = 'server',
+      host = 'localhost',
+      port = '${port}',
+      executable = {
+        command = 'node',
+        -- 💀 Make sure to update this path to point to your installation
+        args = { masonPkg_path .. '/js-debug-adapter/js-debug/src/dapDebugServer.js', '${port}' },
+      },
+    }
+
+    require('dap').configurations.javascript = {
+      {
+        type = 'pwa-node',
+        request = 'launch',
+        name = 'Launch file',
+        program = '${file}',
+        cwd = '${workspaceFolder}',
       },
     }
 
@@ -65,6 +87,7 @@ return {
         'delve',
         'codelldb',
         'gdb',
+        'js-debug-adapter',
       },
     }
 

@@ -1,4 +1,4 @@
-local prettierd = { filetypes = { 'javascriptreact', 'typescriptreact', 'jsx', 'scss', 'sass', 'css', 'tsx' } }
+local prettierd = { filetypes = { 'javascriptreact', 'typescriptreact', 'jsx', 'scss', 'sass', 'css', 'tsx', 'typescript' } }
 local clang = { filetypes = { 'c' } }
 
 return {
