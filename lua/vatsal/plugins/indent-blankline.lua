@@ -6,7 +6,9 @@ return {
   dependencies = { 'HiPhish/rainbow-delimiters.nvim' },
   event = { 'BufReadPre', 'BufNewFile' },
   main = 'ibl',
+  enabled = false,
   opts = {
+    whitespace = { highlight = { 'Cursor' } },
     scope = { highlight = { 'MoreMsg' }, char = '▎', show_start = false, show_end = false },
     exclude = {
       buftypes = { 'dashboard', 'alpha', 'help', 'lazy', 'mason' },
