@@ -20,6 +20,8 @@ vim.opt.rtp:prepend(lazypath)
 
 local config = require 'vatsal'
 
+require(config.settings)
+
 require('lazy').setup(config.plugins, {
   defaults = { lazy = true },
   performance = {
@@ -30,8 +32,6 @@ require('lazy').setup(config.plugins, {
     },
   },
 })
-
-require(config.settings)
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
