@@ -1,4 +1,18 @@
-local active_colorscheme_name = 'komau'
+local primary_clr = '#f2e202'
+local active_scheme = 'komau'
+
+local function setDefaults()
+  vim.cmd 'hi Whitespace cterm=NONE guifg=#343434'
+  vim.cmd(string.format('hi Keyword guifg=%s', primary_clr))
+  vim.cmd(string.format('hi Cursor cterm=NONE guifg=black guibg=%s', primary_clr))
+end
+
+local function getConfig(colorscheme_name)
+  return function()
+    vim.cmd.colorscheme(colorscheme_name)
+    setDefaults()
+  end
+end
 
 local colorschemes = {
   'ntk148v/komau.vim',
@@ -76,38 +90,28 @@ local colorschemes = {
 }
 
 for i, v in ipairs(colorschemes) do
-  local val = type(v) == 'string' and v or (v.name or v[1])
-  local isActive = string.find(string.gsub(val, '-', ''), string.gsub(active_colorscheme_name, '-', ''))
+  local val = type(v) == 'string' and v or (v.name or v[1]) -- get name of current colorscheme
+  local is_active_colorscheme = string.find(val:gsub('-', ''), active_scheme:gsub('-', ''))
 
-  if not (isActive == nil) then
-    local active_colorscheme
+  if not (is_active_colorscheme == nil) then
+    local clrscheme_opts
 
     if type(v) == 'string' then
-      active_colorscheme = {
+      clrscheme_opts = {
         v,
         lazy = false,
         priority = 1000,
-        config = function()
-          local ok = pcall(vim.cmd.colorscheme, active_colorscheme_name)
-
-          if not ok then
-            error "Couldn't apply colorscheme"
-          end
-
-          vim.cmd.colorscheme(active_colorscheme_name)
-        end,
+        config = getConfig(active_scheme),
       }
     else
-      active_colorscheme = v
-      active_colorscheme.priority = 1000
-      active_colorscheme.lazy = false
+      clrscheme_opts = v
+      clrscheme_opts.priority = 1000
+      clrscheme_opts.lazy = false
 
-      active_colorscheme.config = active_colorscheme.config or function()
-        vim.cmd.colorscheme(v.name or active_colorscheme_name)
-      end
+      clrscheme_opts.config = clrscheme_opts.config or getConfig(v.name or active_scheme)
     end
 
-    colorschemes[i] = active_colorscheme
+    colorschemes[i] = clrscheme_opts
   end
 end
 

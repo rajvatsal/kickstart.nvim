@@ -67,7 +67,5 @@ vim.opt.splitright = true
 vim.opt.laststatus = 0
 vim.opt.guicursor = 'n:blinkwait0-blinkon50-blinkoff10,n-i-ve-v:block-Cursor'
 vim.opt.listchars = 'space:'
+vim.opt.list = true
 vim.keymap.set('n', '<C-i>', '<C-i>', { noremap = true, silent = true })
-vim.cmd 'set list'
-vim.cmd 'hi Cursor cterm=NONE guifg=black guibg=#FFF700'
-vim.cmd 'hi Whitespace cterm=NONE guifg=#343434'
