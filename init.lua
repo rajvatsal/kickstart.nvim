@@ -18,10 +18,9 @@ end
 ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- load config
-local plugins = require 'vatsal'
+local config = require 'vatsal'
 
-require('lazy').setup(plugins, {
+require('lazy').setup(config.plugins, {
   defaults = { lazy = true },
   performance = {
     rtp = {
@@ -39,5 +38,8 @@ require('lazy').setup(plugins, {
     },
   },
 })
+
+require(config.settings)
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

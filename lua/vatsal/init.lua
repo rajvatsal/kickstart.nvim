@@ -1,4 +1,4 @@
--- Load settings
-require 'vatsal.settings'
-
-return 'vatsal.plugins'
+return {
+  plugins = 'vatsal.plugins',
+  settings = 'vatsal.settings',
+}

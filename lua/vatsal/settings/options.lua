@@ -60,11 +60,11 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.softtabstop = 2
 vim.opt.relativenumber = true
-vim.opt.cursorline = true
--- vim.opt.showmode = false
 vim.opt.virtualedit = 'block'
 vim.opt.scrolloff = 10
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.laststatus = 0
+vim.opt.guicursor = 'n:blinkwait0-blinkon50-blinkoff10,a:block-bold-Cursor'
 vim.keymap.set('n', '<C-i>', '<C-i>', { noremap = true, silent = true })
+vim.cmd 'hi Cursor cterm=NONE guifg=black guibg=#FFF700'
