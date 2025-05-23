@@ -1,10 +1,12 @@
 local primary_clr = '#f2e202'
+local string_clr = '#529624'
 local active_scheme = 'komau'
 
 local function setDefaults()
   vim.cmd 'hi Whitespace cterm=NONE guifg=#343434'
   vim.cmd(string.format('hi Keyword guifg=%s', primary_clr))
   vim.cmd(string.format('hi Cursor cterm=NONE guifg=black guibg=%s', primary_clr))
+  vim.cmd(string.format('hi String cterm=NONE guifg=%s gui=NONE', string_clr))
 end
 
 local function getConfig(colorscheme_name)
@@ -114,5 +116,7 @@ for i, v in ipairs(colorschemes) do
     colorschemes[i] = clrscheme_opts
   end
 end
+
+setDefaults()
 
 return colorschemes
