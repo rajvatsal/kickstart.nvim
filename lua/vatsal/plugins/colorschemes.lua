@@ -3,10 +3,13 @@ local string_clr = '#529624'
 local active_scheme = 'komau'
 
 local function setDefaults()
-  vim.cmd 'hi Whitespace cterm=NONE guifg=#343434'
-  vim.cmd(string.format('hi Keyword guifg=%s', primary_clr))
-  vim.cmd(string.format('hi Cursor cterm=NONE guifg=black guibg=%s', primary_clr))
-  vim.cmd(string.format('hi String cterm=NONE guifg=%s gui=NONE', string_clr))
+  vim.cmd.hi 'Whitespace cterm=NONE guifg=#343434'
+  vim.cmd.hi 'CursorLine guibg=transparent'
+  vim.cmd.hi 'NormalFloat guibg=NONE'
+  vim.cmd.hi(string.format('Keyword guifg=%s', primary_clr))
+  vim.cmd.hi(string.format('Cursor cterm=NONE guifg=black guibg=%s', primary_clr))
+  vim.cmd.hi(string.format('CursorLineNr guifg=%s guibg=NONE', primary_clr))
+  vim.cmd.hi(string.format('String cterm=NONE guifg=%s gui=NONE', string_clr))
 end
 
 local function getConfig(colorscheme_name)
