@@ -6,6 +6,15 @@ local clr_darkyellow = '#f2bb22'
 local clr_purple = '#f542a7'
 local clr_white = '#f7f7f7'
 
+local function getFileName(f_name)
+  local isNotCreated = f_name:find 'No Name'
+  if isNotCreated == nil then
+    return f_name
+  else
+    return '*new*'
+  end
+end
+
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = {
@@ -19,6 +28,7 @@ return {
       section_separators = { left = '', right = '' },
       component_separators = { left = '󰧞', right = '󰧞' },
       globalstatus = true,
+      always_show_tabline = false,
     },
     sections = {
       lualine_a = {
@@ -32,14 +42,7 @@ return {
       lualine_b = {
         {
           'filename',
-          fmt = function(f_name)
-            local isCreated = f_name:find 'No Name'
-            if isCreated == nil then
-              return f_name
-            else
-              return '*new*'
-            end
-          end,
+          fmt = getFileName,
           color = { fg = clr_white, gui = 'bold' },
         },
         { 'hostname' },
@@ -62,6 +65,20 @@ return {
       lualine_z = {
         { 'progress', color = { bg = 'NONE', gui = 'bold' }, separator = '' },
         { 'location', color = { bg = 'NONE', gui = 'bold' } },
+      },
+    },
+    tabline = {
+      lualine_a = {
+        {
+          'tabs',
+          mode = 2,
+          max_length = vim.o.columns,
+          tabs_color = {
+            active = 'TabLineSel',
+            inactive = 'lualine_a_normal',
+          },
+          fmt = getFileName,
+        },
       },
     },
   },
