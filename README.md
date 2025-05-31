@@ -10,3 +10,4 @@ This is my personal config for neovim that I created using kickstart. You can ha
 
 ## TODO:
 - Add git keymaps like `<leader>ga` to add entire directory or `<leader>gb` to add current buffer
+- Add highlights for todo comments
