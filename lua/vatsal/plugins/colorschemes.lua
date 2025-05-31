@@ -1,15 +1,25 @@
-local primary_clr = '#f2e202'
-local string_clr = '#529624'
-local active_scheme = 'komau'
+local CLR = {
+  primary = '#f5f500',
+  string = '#529624',
+  comment = '#db9a6b',
+  diagnostic_unused = '#545454',
+}
 
+local CLR_SCHEME = 'komau'
+
+-- TODO:
+-- Add comments
+-- Increase readability
 local function setDefaults()
   vim.cmd.hi 'Whitespace cterm=NONE guifg=#343434'
   vim.cmd.hi 'CursorLine guibg=transparent'
   vim.cmd.hi 'NormalFloat guibg=NONE'
-  vim.cmd.hi(string.format('Keyword guifg=%s', primary_clr))
-  vim.cmd.hi(string.format('Cursor cterm=NONE guifg=black guibg=%s', primary_clr))
-  vim.cmd.hi(string.format('CursorLineNr guifg=%s guibg=NONE', primary_clr))
-  vim.cmd.hi(string.format('String cterm=NONE guifg=%s gui=NONE', string_clr))
+  vim.cmd.hi(string.format('Keyword guifg=%s', CLR.primary))
+  vim.cmd.hi(string.format('Cursor cterm=NONE guifg=black guibg=%s', CLR.primary))
+  vim.cmd.hi(string.format('CursorLineNr guifg=%s guibg=NONE', CLR.primary))
+  vim.cmd.hi(string.format('String cterm=NONE guifg=%s gui=NONE', CLR.string))
+  vim.cmd.hi(string.format('Comment guifg=%s gui=NONE', CLR.comment))
+  vim.cmd.hi(string.format('DiagnosticUnnecessary guifg=%s gui=italic', CLR.diagnostic_unused))
 end
 
 local function getConfig(colorscheme_name)
@@ -96,7 +106,7 @@ local colorschemes = {
 
 for i, v in ipairs(colorschemes) do
   local val = type(v) == 'string' and v or (v.name or v[1]) -- get name of current colorscheme
-  local is_active_colorscheme = string.find(val:gsub('-', ''), active_scheme:gsub('-', ''))
+  local is_active_colorscheme = string.find(val:gsub('-', ''), CLR_SCHEME:gsub('-', ''))
 
   if not (is_active_colorscheme == nil) then
     local clrscheme_opts
@@ -106,14 +116,14 @@ for i, v in ipairs(colorschemes) do
         v,
         lazy = false,
         priority = 1000,
-        config = getConfig(active_scheme),
+        config = getConfig(CLR_SCHEME),
       }
     else
       clrscheme_opts = v
       clrscheme_opts.priority = 1000
       clrscheme_opts.lazy = false
 
-      clrscheme_opts.config = clrscheme_opts.config or getConfig(v.name or active_scheme)
+      clrscheme_opts.config = clrscheme_opts.config or getConfig(v.name or CLR_SCHEME)
     end
 
     colorschemes[i] = clrscheme_opts
