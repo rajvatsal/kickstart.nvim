@@ -7,3 +7,6 @@ This is my personal config for neovim that I created using kickstart. You can ha
 
 ![Start screenshot][startScreen]
 ![Code screenshot][code]
+
+## TODO:
+- Add git keymaps like `<leader>ga` to add entire directory or `<leader>gb` to add current buffer
