@@ -6,11 +6,13 @@ local CLR = {
 }
 
 local CLR_SCHEME = 'komau'
+local M
 
--- TODO:
--- Add comments
--- Increase readability
-local function setDefaults()
+--------------------------------------------------------------------------------
+-- Helper functions
+--------------------------------------------------------------------------------
+
+local function setColors()
   vim.cmd.hi 'Whitespace cterm=NONE guifg=#343434'
   vim.cmd.hi 'CursorLine guibg=transparent'
   vim.cmd.hi 'NormalFloat guibg=NONE' -- for which key
@@ -25,11 +27,15 @@ end
 local function getConfig(colorscheme_name)
   return function()
     vim.cmd.colorscheme(colorscheme_name)
-    setDefaults()
+    setColors()
   end
 end
 
-local colorschemes = {
+--------------------------------------------------------------------------------
+-- Add colorschemes
+--------------------------------------------------------------------------------
+
+M = {
   'ntk148v/komau.vim',
   {
     'kvrohit/rasmus.nvim',
@@ -104,32 +110,36 @@ local colorschemes = {
   },
 }
 
-for i, v in ipairs(colorschemes) do
-  local val = type(v) == 'string' and v or (v.name or v[1]) -- get name of current colorscheme
-  local is_active_colorscheme = string.find(val:gsub('-', ''), CLR_SCHEME:gsub('-', ''))
+--------------------------------------------------------------------------------
+-- Set colorscheme
+--------------------------------------------------------------------------------
+
+for i, v in ipairs(M) do
+  local name = type(v) == 'string' and v or (v.name or v[1])
+  local is_active_colorscheme = string.find(name:gsub('-', ''), CLR_SCHEME:gsub('-', ''))
 
   if not (is_active_colorscheme == nil) then
-    local clrscheme_opts
+    local opts
 
     if type(v) == 'string' then
-      clrscheme_opts = {
+      opts = {
         v,
         lazy = false,
         priority = 1000,
         config = getConfig(CLR_SCHEME),
       }
     else
-      clrscheme_opts = v
-      clrscheme_opts.priority = 1000
-      clrscheme_opts.lazy = false
+      opts = v
+      opts.priority = 1000
+      opts.lazy = false
 
-      clrscheme_opts.config = clrscheme_opts.config or getConfig(v.name or CLR_SCHEME)
+      opts.config = opts.config or getConfig(v.name or CLR_SCHEME)
     end
 
-    colorschemes[i] = clrscheme_opts
+    M[i] = opts
   end
 end
 
-setDefaults()
+setColors() -- Useful when I experiment with colors
 
-return colorschemes
+return M
