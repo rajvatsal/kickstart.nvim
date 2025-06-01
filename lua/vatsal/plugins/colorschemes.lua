@@ -1,7 +1,7 @@
 local CLR = {
   primary = '#f5f500',
   string = '#529624',
-  comment = '#d69045',
+  comment = 'orange',
   diagnostic_unused = '#545454',
 }
 
@@ -12,11 +12,15 @@ local M
 -- Helper functions
 --------------------------------------------------------------------------------
 
+-- TODO: Find a way to increase priority just for @comments hl-group provided by treesitter
+-- so that special comments can have a different color
 local function setColors()
   vim.cmd.hi 'Whitespace cterm=NONE guifg=#343434'
   vim.cmd.hi 'CursorLine guibg=transparent'
   vim.cmd.hi 'NormalFloat guibg=NONE' -- for which key
-  vim.cmd.hi '@comment.todo gui=bold,inverse,underdouble'
+  vim.cmd.hi '@comment.todo gui=bold,standout'
+  vim.cmd.hi '@comment.error gui=bold,italic,standout'
+  vim.cmd.hi '@comment.note gui=bold,italic,standout'
   vim.cmd.hi(string.format('Keyword guifg=%s', CLR.primary))
   vim.cmd.hi(string.format('Cursor cterm=NONE guifg=black guibg=%s', CLR.primary))
   vim.cmd.hi(string.format('CursorLineNr guifg=%s guibg=NONE', CLR.primary))
@@ -111,7 +115,7 @@ M = {
 }
 
 --------------------------------------------------------------------------------
--- Set colorscheme
+-- Set desired colorscheme
 --------------------------------------------------------------------------------
 
 for i, v in ipairs(M) do
