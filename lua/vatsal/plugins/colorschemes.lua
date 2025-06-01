@@ -14,12 +14,12 @@ local function setDefaults()
   vim.cmd.hi 'Whitespace cterm=NONE guifg=#343434'
   vim.cmd.hi 'CursorLine guibg=transparent'
   vim.cmd.hi 'NormalFloat guibg=NONE' -- for which key
+  vim.cmd.hi '@comment.todo gui=bold,inverse,underdouble'
   vim.cmd.hi(string.format('Keyword guifg=%s', CLR.primary))
   vim.cmd.hi(string.format('Cursor cterm=NONE guifg=black guibg=%s', CLR.primary))
   vim.cmd.hi(string.format('CursorLineNr guifg=%s guibg=NONE', CLR.primary))
   vim.cmd.hi(string.format('String cterm=NONE guifg=%s gui=NONE', CLR.string))
-  vim.cmd.hi(string.format('Comment guifg=%s gui=NONE', CLR.comment))
-  vim.cmd.hi(string.format('DiagnosticUnnecessary guifg=%s gui=italic', CLR.diagnostic_unused))
+  vim.cmd.hi(string.format('@comment guifg=%s gui=NONE', CLR.comment))
 end
 
 local function getConfig(colorscheme_name)
