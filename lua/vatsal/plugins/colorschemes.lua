@@ -1,7 +1,7 @@
 local CLR = {
   primary = '#f5f500',
   string = '#529624',
-  comment = '#db9a6b',
+  comment = '#d69045',
   diagnostic_unused = '#545454',
 }
 
@@ -13,7 +13,7 @@ local CLR_SCHEME = 'komau'
 local function setDefaults()
   vim.cmd.hi 'Whitespace cterm=NONE guifg=#343434'
   vim.cmd.hi 'CursorLine guibg=transparent'
-  vim.cmd.hi 'NormalFloat guibg=NONE'
+  vim.cmd.hi 'NormalFloat guibg=NONE' -- for which key
   vim.cmd.hi(string.format('Keyword guifg=%s', CLR.primary))
   vim.cmd.hi(string.format('Cursor cterm=NONE guifg=black guibg=%s', CLR.primary))
   vim.cmd.hi(string.format('CursorLineNr guifg=%s guibg=NONE', CLR.primary))
