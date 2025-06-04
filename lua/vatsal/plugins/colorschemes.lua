@@ -21,6 +21,7 @@ local function setColors()
   vim.cmd.hi '@comment.todo gui=bold,standout'
   vim.cmd.hi '@comment.error gui=bold,italic,standout'
   vim.cmd.hi '@comment.note gui=bold,italic,standout'
+  vim.cmd.hi 'Visual guifg=NONE'
   vim.cmd.hi(string.format('Keyword guifg=%s', CLR.primary))
   vim.cmd.hi(string.format('Cursor cterm=NONE guifg=black guibg=%s', CLR.primary))
   vim.cmd.hi(string.format('CursorLineNr guifg=%s guibg=NONE', CLR.primary))
