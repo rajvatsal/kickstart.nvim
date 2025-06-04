@@ -1,3 +1,5 @@
+local fn = vim.fn
+
 local function split(str)
   local sub_strings = {}
   for i in string.gmatch(str, '%S+') do
@@ -38,22 +40,28 @@ local function build_javascript()
   -- })
 end
 
-local function gotoroot()
-  local path = vim.api.nvim_buf_get_name(0)
-  local gitPath
-  while path and path ~= vim.fn.fnamemodify(path, ':p:h:h') do
-    if vim.fn.has 'win32' == 1 then
-      gitPath = path .. '\\.git'
-    else
-      gitPath = path .. '/.git'
-    end
+function GoToGitRoot()
+  local current_directory = vim.api.nvim_buf_get_name(0)
+  local path_seperator = '/'
 
-    if vim.fn.isdirectory(gitPath) == 1 then
-      vim.cmd('cd ' .. path)
-      print('Moved to: ' .. path)
+  -- If function is called outside of netrw
+  if fn.isdirectory(current_directory) == 0 then
+    current_directory = fn.fnamemodify(current_directory, ':p:h')
+  end
+
+  if fn.has 'win32' == 1 then
+    path_seperator = '\\'
+  end
+
+  while current_directory and current_directory ~= vim.fn.fnamemodify(current_directory, ':p:h:h') do
+    local git_path = current_directory .. path_seperator .. '.git'
+
+    if fn.isdirectory(git_path) == 1 then
+      vim.cmd('cd ' .. current_directory)
+      print('Moved to: ' .. current_directory)
       return
     end
-    path = vim.fn.fnamemodify(path, ':h')
+    current_directory = vim.fn.fnamemodify(current_directory, ':h')
   end
 
   print 'No git directory found'
@@ -105,7 +113,7 @@ vim.keymap.set('n', '<leader>mb', function()
   vim.cmd 'cd %:p:h'
   print('Moved to: ' .. vim.fn.expand '%:p:h')
 end, { noremap = true, silent = true, desc = "[M]ove to current [B]uffer's path" })
-vim.keymap.set('n', '<leader>mg', gotoroot, { silent = true, noremap = true, desc = '[M]ove to [G]it Root' })
+vim.keymap.set('n', '<leader>mg', GoToGitRoot, { silent = true, noremap = true, desc = '[M]ove to [G]it Root' })
 
 -- build commands
 vim.keymap.set('n', '<leader>pj', build_javascript, { silent = true, noremap = true, desc = '[P]ackage [J]avascript Project' })
