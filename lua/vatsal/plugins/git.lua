@@ -1,8 +1,46 @@
 return {
-  -- Adds git related signs to the gutter, as well as utilities for managing changes
   'lewis6991/gitsigns.nvim',
+  keys = {
+    {
+      '<leader>ga',
+      function()
+        _G.GoToGitRoot()
+        vim.cmd 'G add .'
+        vim.cmd 'G status'
+      end,
+      desc = '[G]it [A]dd',
+    },
+    {
+      '<leader>gs',
+      '<cmd>G status<CR>',
+      desc = '[G]it [S]tatus',
+    },
+    {
+      '<leader>gA',
+      '<cmd>G add %<CR>',
+      desc = '[G]it [A]dd opened file',
+    },
+    {
+      '<leader>gc',
+      function()
+        _G.GoToGitRoot()
+        vim.cmd 'G add .'
+        vim.cmd 'G commit'
+      end,
+      desc = '[G]it [C]ommit (Stage everything before commit)',
+    },
+    {
+      '<leader>gC',
+      '<cmd>G commit<CR>',
+      desc = '[G]it [C]ommit only',
+    },
+    {
+      '<leader>gr',
+      '<cmd>G reset<CR>',
+      desc = '[G]it [R]eset soft',
+    },
+  },
   dependencies = {
-    -- Git related plugins
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
   },
