@@ -26,7 +26,7 @@ return {
     options = {
       disabled_filetypes = { 'NvimTree' },
       section_separators = { left = '', right = '' },
-      component_separators = { left = '󰧞', right = '󰧞' },
+      component_separators = { left = '', right = '' },
       globalstatus = true,
       always_show_tabline = false,
     },
