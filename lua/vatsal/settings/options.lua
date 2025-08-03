@@ -65,7 +65,6 @@ vim.opt.scrolloff = 10
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.cmdheight = 0
-vim.opt.guicursor = 'n:blinkwait0-blinkon50-blinkoff10,n-i-ve-v:block-Cursor'
 vim.opt.listchars = { space = '' }
 vim.opt.list = true
 vim.opt.cursorline = true

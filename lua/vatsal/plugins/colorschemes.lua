@@ -1,11 +1,11 @@
-local CLR = {
+local clr = {
   primary = '#f5f500',
   string = '#529624',
   comment = 'orange',
   diagnostic_unused = '#545454',
 }
 
-local CLR_SCHEME = 'komau'
+local CLR_SCHEME = 'gruber-darker'
 local M
 
 --------------------------------------------------------------------------------
@@ -22,11 +22,18 @@ local function setColors()
   vim.cmd.hi '@comment.error gui=bold,italic,standout'
   vim.cmd.hi '@comment.note gui=bold,italic,standout'
   vim.cmd.hi 'Visual guifg=NONE'
-  vim.cmd.hi(string.format('Keyword guifg=%s', CLR.primary))
-  vim.cmd.hi(string.format('Cursor cterm=NONE guifg=black guibg=%s', CLR.primary))
-  vim.cmd.hi(string.format('CursorLineNr guifg=%s guibg=NONE', CLR.primary))
-  vim.cmd.hi(string.format('String cterm=NONE guifg=%s gui=NONE', CLR.string))
-  vim.cmd.hi(string.format('@comment guifg=%s gui=NONE', CLR.comment))
+  vim.cmd.hi(string.format('Keyword guifg=%s', clr.primary))
+  vim.cmd.hi(string.format('Cursor cterm=NONE guifg=black guibg=%s', clr.primary))
+  vim.cmd.hi(string.format('CursorLineNr guifg=%s guibg=NONE', clr.primary))
+  vim.cmd.hi(string.format('String cterm=NONE guifg=%s gui=italic', clr.string))
+  vim.cmd.hi(string.format('@comment guifg=%s gui=NONE', clr.comment))
+
+  -- These colors are from Lualine_Clrs
+  vim.cmd.hi(string.format('iCursor guifg=%s guibg=%s', '#66ff00', '#66ff00'))
+  vim.cmd.hi(string.format('vCursor guifg=%s guibg=%s', '#ff007f', '#ff007f'))
+  vim.cmd.hi(string.format('rCursor guifg=%s guibg=%s', '#ffffff', '#ffffff'))
+  vim.opt.guicursor =
+    'a:Cursor/lCursor,n-v-c-i:block,n:blinkwait700-blinkoff400-blinkon250,v-ve:vCursor,i-ci:iCursor,r-cr:rCursor,sm:block-blinkwait175-blinkoff150-blinkon175'
 end
 
 local function getConfig(colorscheme_name)
@@ -65,6 +72,7 @@ M = {
       vim.cmd.colorscheme 'tokyonight-night'
     end,
   },
+  'blazkowolf/gruber-darker.nvim',
   'lunarvim/colorschemes',
   'rebelot/kanagawa.nvim',
   'catppuccin/nvim',

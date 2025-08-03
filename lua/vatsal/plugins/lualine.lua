@@ -1,10 +1,12 @@
-local clr_green = '#6eb93b'
-local clr_red = '#d73a49'
-local clr_darkgrey = '#a2a2a3'
-local clr_darkgrey_700 = '#545454 '
-local clr_darkyellow = '#f2bb22'
-local clr_purple = '#f542a7'
-local clr_white = '#f7f7f7'
+_G.Lualine_Clrs = {
+  green = '#66ff00', -- '#6eb93b',
+  red = '#EB212E', -- '#d73a49',
+  darkgrey = '#a2a2a3',
+  darkgrey_700 = '#545454 ',
+  darkyellow = '#f2bb22',
+  purple = '#ff007f', -- '#f542a7',
+  white = '#f7f7f7',
+}
 
 local function getFileName(f_name)
   local isNotCreated = f_name:find 'No Name'
@@ -43,7 +45,7 @@ return {
         {
           'filename',
           fmt = getFileName,
-          color = { fg = clr_white, gui = 'bold' },
+          color = { fg = Lualine_Clrs.white, gui = 'bold' },
         },
         { 'hostname' },
         { 'branch' },
@@ -86,44 +88,44 @@ return {
     require('lualine').setup(opts)
     vim.opt.cmdheight = 1
     vim.cmd.hi 'StatusLine guibg=NONE'
-    vim.cmd.hi(string.format('lualine_a_insert guifg=%s guibg=NONE', clr_green))
-    vim.cmd.hi(string.format('lualine_a_normal guifg=%s guibg=NONE', clr_red))
-    vim.cmd.hi(string.format('lualine_a_visual guifg=%s guibg=NONE', clr_purple))
-    vim.cmd.hi(string.format('lualine_a_command guifg=%s guibg=NONE', clr_white))
+    vim.cmd.hi(string.format('lualine_a_insert guifg=%s guibg=NONE', Lualine_Clrs.green))
+    vim.cmd.hi(string.format('lualine_a_normal guifg=%s guibg=NONE', Lualine_Clrs.red))
+    vim.cmd.hi(string.format('lualine_a_visual guifg=%s guibg=NONE', Lualine_Clrs.purple))
+    vim.cmd.hi(string.format('lualine_a_command guifg=%s guibg=NONE', Lualine_Clrs.white))
 
-    vim.cmd.hi(string.format('lualine_b_normal guifg=%s', clr_darkgrey))
-    vim.cmd.hi(string.format('lualine_b_visual guifg=%s', clr_purple))
-    vim.cmd.hi(string.format('lualine_b_filename_command guifg=%s', clr_darkgrey_700))
-    vim.cmd.hi(string.format('lualine_b_command guifg=%s', clr_darkgrey_700))
+    vim.cmd.hi(string.format('lualine_b_normal guifg=%s', Lualine_Clrs.darkgrey))
+    vim.cmd.hi(string.format('lualine_b_visual guifg=%s', Lualine_Clrs.purple))
+    vim.cmd.hi(string.format('lualine_b_filename_command guifg=%s', Lualine_Clrs.darkgrey_700))
+    vim.cmd.hi(string.format('lualine_b_command guifg=%s', Lualine_Clrs.darkgrey_700))
 
     vim.cmd.hi 'lualine_c_normal guibg=NONE'
     vim.cmd.hi 'lualine_c_insert guibg=NONE'
     vim.cmd.hi 'lualine_c_visual guibg=NONE'
     vim.cmd.hi 'lualine_c_command guibg=NONE'
 
-    vim.cmd.hi(string.format('lualine_x_diagnostics_error_command guifg=%s', clr_darkgrey_700))
-    vim.cmd.hi(string.format('lualine_x_diagnostics_hint_command guifg=%s', clr_darkgrey_700))
-    vim.cmd.hi(string.format('lualine_x_diagnostics_info_command guifg=%s', clr_darkgrey_700))
-    vim.cmd.hi(string.format('lualine_x_diagnostics_warn_command guifg=%s', clr_darkgrey_700))
-    vim.cmd.hi(string.format('lualine_x_diagnostics_error_visual guifg=%s', clr_darkgrey_700))
-    vim.cmd.hi(string.format('lualine_x_diagnostics_hint_visual guifg=%s', clr_darkgrey_700))
-    vim.cmd.hi(string.format('lualine_x_diagnostics_info_visual guifg=%s', clr_darkgrey_700))
-    vim.cmd.hi(string.format('lualine_x_diagnostics_warn_visual guifg=%s', clr_darkgrey_700))
-    vim.cmd.hi(string.format('lualine_x_diagnostics_error_insert guifg=%s', clr_darkgrey_700))
-    vim.cmd.hi(string.format('lualine_x_diagnostics_hint_insert guifg=%s', clr_darkgrey_700))
-    vim.cmd.hi(string.format('lualine_x_diagnostics_info_insert guifg=%s', clr_darkgrey_700))
-    vim.cmd.hi(string.format('lualine_x_diagnostics_warn_insert guifg=%s', clr_darkgrey_700))
+    vim.cmd.hi(string.format('lualine_x_diagnostics_error_command guifg=%s', Lualine_Clrs.darkgrey_700))
+    vim.cmd.hi(string.format('lualine_x_diagnostics_hint_command guifg=%s', Lualine_Clrs.darkgrey_700))
+    vim.cmd.hi(string.format('lualine_x_diagnostics_info_command guifg=%s', Lualine_Clrs.darkgrey_700))
+    vim.cmd.hi(string.format('lualine_x_diagnostics_warn_command guifg=%s', Lualine_Clrs.darkgrey_700))
+    vim.cmd.hi(string.format('lualine_x_diagnostics_error_visual guifg=%s', Lualine_Clrs.darkgrey_700))
+    vim.cmd.hi(string.format('lualine_x_diagnostics_hint_visual guifg=%s', Lualine_Clrs.darkgrey_700))
+    vim.cmd.hi(string.format('lualine_x_diagnostics_info_visual guifg=%s', Lualine_Clrs.darkgrey_700))
+    vim.cmd.hi(string.format('lualine_x_diagnostics_warn_visual guifg=%s', Lualine_Clrs.darkgrey_700))
+    vim.cmd.hi(string.format('lualine_x_diagnostics_error_insert guifg=%s', Lualine_Clrs.darkgrey_700))
+    vim.cmd.hi(string.format('lualine_x_diagnostics_hint_insert guifg=%s', Lualine_Clrs.darkgrey_700))
+    vim.cmd.hi(string.format('lualine_x_diagnostics_info_insert guifg=%s', Lualine_Clrs.darkgrey_700))
+    vim.cmd.hi(string.format('lualine_x_diagnostics_warn_insert guifg=%s', Lualine_Clrs.darkgrey_700))
 
-    vim.cmd.hi(string.format('lualine_y_diff_added_normal guibg=NONE guifg=%s', clr_green))
-    vim.cmd.hi(string.format('lualine_y_diff_removed guifg=%s', clr_red))
-    vim.cmd.hi(string.format('lualine_y_diff_modified guifg=%s', clr_darkyellow))
+    vim.cmd.hi(string.format('lualine_y_diff_added_normal guibg=NONE guifg=%s', Lualine_Clrs.green))
+    vim.cmd.hi(string.format('lualine_y_diff_removed guifg=%s', Lualine_Clrs.red))
+    vim.cmd.hi(string.format('lualine_y_diff_modified guifg=%s', Lualine_Clrs.darkyellow))
 
-    vim.cmd.hi(string.format('lualine_z_progress_normal guifg=%s', clr_white))
-    vim.cmd.hi(string.format('lualine_z_location_normal guifg=%s', clr_white))
-    vim.cmd.hi(string.format('lualine_z_progress_insert guifg=%s', clr_green))
-    vim.cmd.hi(string.format('lualine_z_location_insert guifg=%s', clr_green))
-    vim.cmd.hi(string.format('lualine_z_progress_visual guifg=%s', clr_purple))
-    vim.cmd.hi(string.format('lualine_z_location_visual guifg=%s', clr_purple))
+    vim.cmd.hi(string.format('lualine_z_progress_normal guifg=%s', Lualine_Clrs.white))
+    vim.cmd.hi(string.format('lualine_z_location_normal guifg=%s', Lualine_Clrs.white))
+    vim.cmd.hi(string.format('lualine_z_progress_insert guifg=%s', Lualine_Clrs.green))
+    vim.cmd.hi(string.format('lualine_z_location_insert guifg=%s', Lualine_Clrs.green))
+    vim.cmd.hi(string.format('lualine_z_progress_visual guifg=%s', Lualine_Clrs.purple))
+    vim.cmd.hi(string.format('lualine_z_location_visual guifg=%s', Lualine_Clrs.purple))
     vim.cmd.hi 'lualine_z_progress_command guibg=white guifg=black'
     vim.cmd.hi 'lualine_z_location_command guibg=white guifg=black'
   end,
