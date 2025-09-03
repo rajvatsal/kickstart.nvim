@@ -70,3 +70,5 @@ vim.opt.list = true
 vim.opt.cursorline = true
 vim.opt.showmode = false
 vim.keymap.set('n', '<C-i>', '<C-i>', { noremap = true, silent = true })
+vim.opt.wildignorecase = true
+vim.opt.wildignore = '*/node_modules/**,*/dist/**,*/__tests__/**,*/__test__/**,*/bin/**,*.spec.*,*.o,*.obj'
