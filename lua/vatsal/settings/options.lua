@@ -72,3 +72,8 @@ vim.opt.showmode = false
 vim.keymap.set('n', '<C-i>', '<C-i>', { noremap = true, silent = true })
 vim.opt.wildignorecase = true
 vim.opt.wildignore = '*/node_modules/**,*/dist/**,*/__tests__/**,*/__test__/**,*/bin/**,*.spec.*,*.o,*.obj,*.log'
+
+-- [[netrw]]
+vim.g.netrw_winsize = 40
+vim.g.netrw_liststyle = 1
+vim.g.netrw_sort_by = 'exten'
