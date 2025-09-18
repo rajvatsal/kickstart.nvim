@@ -65,7 +65,7 @@ vim.opt.scrolloff = 10
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.cmdheight = 0
-vim.opt.listchars = { space = '󰧟' }
+vim.opt.listchars = { space = '󰧟', tab = '󰧟󰧟>' }
 vim.opt.list = true
 vim.opt.cursorline = true
 vim.opt.showmode = false
