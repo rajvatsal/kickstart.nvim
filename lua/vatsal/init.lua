@@ -127,15 +127,8 @@ kmap({ 'n' }, '<leader>tl', function()
   end
 end, { noremap = true, desc = "[T]oggle [L]ex in Current Buffer's directory" })
 
-kmap('t', '<C-\\>', '<C-\\><C-n>', { desc = 'exit terminal insert mode', silent = true, noremap = true })
-kmap('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = 'Move up a window', silent = true, noremap = true })
-kmap('t', '<C-h>', '<C-\\><C-n><C-w>h', { desc = 'Move left a window', silent = true, noremap = true })
-kmap('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = 'Move down a window', silent = true, noremap = true })
-kmap('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Move right a window', silent = true, noremap = true })
-kmap('n', '<C-k>', '<C-w>k', { desc = 'Move up a window', silent = true, noremap = true })
-kmap('n', '<C-h>', '<C-w>h', { desc = 'Move left a window', silent = true, noremap = true })
-kmap('n', '<C-j>', '<C-w>j', { desc = 'Move down a window', silent = true, noremap = true })
-kmap('n', '<C-l>', '<C-w>l', { desc = 'Move right a window', silent = true, noremap = true })
+kmap('t', '<C-n>', '<C-\\><C-n>', { desc = 'exit terminal insert mode', silent = true, noremap = true })
+kmap('t', "<C-'>", '<C-\\><C-n><C-w>', { desc = 'Move up a window', silent = true, noremap = true })
 kmap('n', '<Leader>tf', function()
   local fc = vim.o.foldcolumn
   if fc == '0' then
