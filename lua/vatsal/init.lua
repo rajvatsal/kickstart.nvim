@@ -27,7 +27,7 @@ vim.o.scrolloff = 10
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.list = true
-vim.opt.listchars = { space = '󰧟', tab = '-|' }
+vim.opt.listchars = { space = '󰧟', tab = '󰄾 ' }
 vim.o.cursorline = true
 vim.o.showmode = false
 vim.o.wildignorecase = true
