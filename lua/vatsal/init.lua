@@ -36,6 +36,7 @@ vim.o.wildignore = '*/node_modules/**,*/dist/**,*/__tests__/**,*/__test__/**,*/b
 vim.g.netrw_winsize = 40
 vim.g.netrw_liststyle = 1
 vim.g.netrw_sort_by = 'exten'
+vim.g.netrw_banner = 0
 
 vim.o.foldmethod = 'indent'
 -- vim.o.foldclose = 'all'
