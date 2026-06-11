@@ -41,7 +41,10 @@ vim.g.netrw_banner = 0
 vim.o.foldmethod = 'indent'
 -- vim.o.foldclose = 'all'
 
---[[ Keymaps ]]
+--
+-- [[ Keymaps ]]
+--
+
 _G.HighlightStatus = true
 local fn = vim.fn
 local kmap = vim.keymap.set
@@ -140,7 +143,35 @@ kmap('n', '<Leader>tf', function()
 	end
 end, { silent = true, noremap = true, desc = '[T]oggle [F]olds Column' })
 
---[[ Auto Commands ]]
+kmap('n', '<leader>kb', function()
+	local bash_command = vim.fn.input 'Command: '
+	local buf = vim.api.nvim_create_buf(false, true)
+	vim.api.nvim_set_current_buf(buf)
+	vim.bo.bufhidden = 'wipe'
+	vim.bo.buftype = 'nofile'
+	vim.keymap.set('n', 'q', function()
+		vim.api.nvim_buf_delete(buf, { force = true })
+	end, { buffer = buf, noremap = true, silent = true })
+	vim.system({ 'sh', '-c', bash_command }, function(result)
+		vim.schedule(function()
+			local out
+			if not result.stderr == '' then
+				out = vim.split(result.stderr, '\n')
+				table.insert(out, 1, 'COMMAND RETURNED WITH ERROR')
+				vim.api.nvim_buf_set_lines(buf, 1, -1, false, out)
+			elseif result.stdout == '' then
+				vim.api.nvim_buf_set_lines(buf, 1, -1, false, { 'NO OUTPUT FROM THE COMMAND' })
+			else
+				vim.api.nvim_buf_set_lines(buf, 1, -1, false, vim.split(result.stdout, '\n'))
+			end
+			vim.api.nvim_echo({}, false, {})
+		end)
+	end)
+end, { noremap = true, desc = '[K]eymap To Run [B]ash Commands' })
+
+--
+-- [[ Auto Commands ]]
+--
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
 	callback = function()
