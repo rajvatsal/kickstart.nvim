@@ -156,9 +156,10 @@ kmap('n', '<leader>kb', function()
   vim.system({ 'sh', '-c', bash_command }, function(result)
     vim.schedule(function()
       local out
-      if not result.stderr == '' then
+      if not (result.stderr == '') then
         out = vim.split(result.stderr, '\n')
         table.insert(out, 1, 'COMMAND RETURNED WITH ERROR')
+        table.insert(out, 2, '')
         vim.api.nvim_buf_set_lines(buf, 1, -1, false, out)
       elseif result.stdout == '' then
         vim.api.nvim_buf_set_lines(buf, 1, -1, false, { 'NO OUTPUT FROM THE COMMAND' })
