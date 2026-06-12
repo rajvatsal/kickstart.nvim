@@ -68,7 +68,8 @@ kmap('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagno
 kmap('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 kmap('x', 'p', [["_dp]]) -- Don't update register when you paste over a word
-kmap('n', '<leader>ta', '<cmd>KickstartFormatToggle<CR>', { noremap = true, silent = true, desc = '[T]oggle [A]utoformat' })
+kmap('n', '<leader>ta', '<cmd>KickstartFormatToggle<CR>',
+  { noremap = true, silent = true, desc = '[T]oggle [A]utoformat' })
 kmap('n', '<leader>th', function()
   if HighlightStatus then
     HighlightStatus = false
@@ -145,11 +146,12 @@ end, { silent = true, noremap = true, desc = '[T]oggle [F]olds Column' })
 kmap('n', '<leader>kb', function()
   local bash_command = vim.fn.input 'Command: '
   local buf = vim.api.nvim_create_buf(false, true)
+  local prev_buf = vim.api.nvim_get_current_buf()
   vim.api.nvim_set_current_buf(buf)
   vim.bo.bufhidden = 'wipe'
   vim.bo.buftype = 'nofile'
   vim.keymap.set('n', 'q', function()
-    vim.api.nvim_buf_delete(buf, { force = true })
+    vim.api.nvim_set_current_buf(prev_buf)
   end, { buffer = buf, noremap = true, silent = true })
   vim.system({ 'sh', '-c', bash_command }, function(result)
     vim.schedule(function()
@@ -219,7 +221,7 @@ vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
 
     -- Basic UI
     set_hl(0, 'Whitespace', { fg = '#343434' })
-    set_hl(0, 'CursorLine', { bg = 'NONE' }) -- "transparent" == NONE
+    set_hl(0, 'CursorLine', { bg = 'NONE' })  -- "transparent" == NONE
     set_hl(0, 'NormalFloat', { bg = clr.bg }) -- for which-key
 
     -- Treesitter comment variants
@@ -250,12 +252,12 @@ vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
 
     -- GUI cursor config (unchanged, already Lua)
     vim.opt.guicursor = 'a:Cursor/lCursor,'
-      .. 'n-v-c-i:block,'
-      .. 'n:blinkwait700-blinkoff400-blinkon250,'
-      .. 'v-ve:vCursor,'
-      .. 'i-ci:iCursor,'
-      .. 'r-cr:rCursor,'
-      .. 'sm:block-blinkwait175-blinkoff150-blinkon175'
+        .. 'n-v-c-i:block,'
+        .. 'n:blinkwait700-blinkoff400-blinkon250,'
+        .. 'v-ve:vCursor,'
+        .. 'i-ci:iCursor,'
+        .. 'r-cr:rCursor,'
+        .. 'sm:block-blinkwait175-blinkoff150-blinkon175'
 
     -- Fold
     -- vim.api.nvim_set_hl(0, 'FoldColumn', { fg = clr.primary, bg = 'NONE' })
@@ -591,7 +593,7 @@ require('lazy').setup({
     opts = function()
       local Lualine_Clrs = {
         green = '#66ff00', -- '#6eb93b',
-        red = '#EB212E', -- '#d73a49',
+        red = '#EB212E',   -- '#d73a49',
         darkgrey = '#a2a2a3',
         darkgrey_700 = '#545454 ',
         darkyellow = '#f2bb22',
@@ -686,9 +688,9 @@ require('lazy').setup({
           lualine_y = {
             {
               'diff',
-              colored = true, -- Displays a colored diff status if set to true
+              colored = true,                 -- Displays a colored diff status if set to true
               diff_color = {
-                add = 'LuaLineDiffAdd', -- Changes the diff's added color
+                add = 'LuaLineDiffAdd',       -- Changes the diff's added color
                 modify = 'LuaLineDiffChange', -- Changes the diff's modified color
                 remove = 'LuaLineDiffDelete', -- Changes the diff's removed color you
               },
@@ -841,8 +843,8 @@ require('lazy').setup({
         -- register which-key VISUAL mode
         -- required for visual <leader>hs (hunk stage) to work
         wk.add {
-          { '<leader>', group = 'VISUAL <leader>' },
-          { '<leader>h', group = 'Git [H]unk', mode = 'v' },
+          { '<leader>',  group = 'VISUAL <leader>' },
+          { '<leader>h', group = 'Git [H]unk',     mode = 'v' },
         }
         wk.setup(opts)
       end,
@@ -980,7 +982,8 @@ require('lazy').setup({
           end
 
           -- Find the Git root directory from the current file's path
-          local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')[1]
+          local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')
+          [1]
           if vim.v.shell_error ~= 0 then
             print 'Not a git repository. Searching on current working directory'
             return cwd
@@ -1056,7 +1059,7 @@ require('lazy').setup({
       },
     },
   },
-  { 'MaximilianLloyd/ascii.nvim', dependencies = 'MunifTanjim/nui.nvim' },
+  { 'MaximilianLloyd/ascii.nvim',  dependencies = 'MunifTanjim/nui.nvim' },
   {
     'dstein64/vim-startuptime',
     cmd = 'StartupTime',
@@ -1089,15 +1092,15 @@ require('lazy').setup({
         end
 
         require('telescope.pickers')
-          .new({}, {
-            prompt_title = 'Harpoon',
-            finder = require('telescope.finders').new_table {
-              results = file_paths,
-            },
-            previewer = conf.file_previewer {},
-            sorter = conf.generic_sorter {},
-          })
-          :find()
+            .new({}, {
+              prompt_title = 'Harpoon',
+              finder = require('telescope.finders').new_table {
+                results = file_paths,
+              },
+              previewer = conf.file_previewer {},
+              sorter = conf.generic_sorter {},
+            })
+            :find()
       end
 
       vim.keymap.set('n', '<TAB>', function()
@@ -1503,10 +1506,10 @@ require('lazy').setup({
       'TmuxNavigatePrevious',
     },
     keys = {
-      { '<c-h>', '<cmd><C-U>TmuxNavigateLeft<cr>' },
-      { '<c-j>', '<cmd><C-U>TmuxNavigateDown<cr>' },
-      { '<c-k>', '<cmd><C-U>TmuxNavigateUp<cr>' },
-      { '<c-l>', '<cmd><C-U>TmuxNavigateRight<cr>' },
+      { '<c-h>',  '<cmd><C-U>TmuxNavigateLeft<cr>' },
+      { '<c-j>',  '<cmd><C-U>TmuxNavigateDown<cr>' },
+      { '<c-k>',  '<cmd><C-U>TmuxNavigateUp<cr>' },
+      { '<c-l>',  '<cmd><C-U>TmuxNavigateRight<cr>' },
       { '<c-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
     },
   },
@@ -1676,7 +1679,8 @@ require('lazy').setup({
           callback = function()
             local stats = require('lazy').stats()
             local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-            dashboard.section.footer.val = '⚡Neovim loaded ' .. stats.loaded .. '/' .. stats.count .. ' plugins in ' .. ms .. 'ms'
+            dashboard.section.footer.val = '⚡Neovim loaded ' ..
+            stats.loaded .. '/' .. stats.count .. ' plugins in ' .. ms .. 'ms'
             pcall(vim.cmd.AlphaRedraw)
           end,
         })
