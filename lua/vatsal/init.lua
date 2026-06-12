@@ -151,7 +151,11 @@ kmap('n', '<leader>kb', function()
   vim.bo.bufhidden = 'wipe'
   vim.bo.buftype = 'nofile'
   vim.keymap.set('n', 'q', function()
-    vim.api.nvim_set_current_buf(prev_buf)
+    if vim.api.nvim_buf_is_valid(prev_buf) then
+      vim.api.nvim_set_current_buf(prev_buf)
+    else
+      vim.api.nvim_buf_delete(buf, { force = true })
+    end
   end, { buffer = buf, noremap = true, silent = true })
   vim.system({ 'sh', '-c', bash_command }, function(result)
     vim.schedule(function()
