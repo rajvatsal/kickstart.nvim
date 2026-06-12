@@ -204,68 +204,66 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
   end,
 })
 
-local function setColors()
-  local clr = {
-    primary = '#f5f500',
-    string = '#529624',
-    comment = 'orange',
-    diagnostic_unused = '#545454',
-    bg = '#181818',
-    blue = '#00d5ff',
-  }
+vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
+  callback = function()
+    local clr = {
+      primary = '#f5f500',
+      string = '#529624',
+      comment = 'orange',
+      diagnostic_unused = '#545454',
+      bg = '#181818',
+      blue = '#00d5ff',
+    }
 
-  local set_hl = vim.api.nvim_set_hl
+    local set_hl = vim.api.nvim_set_hl
 
-  -- Basic UI
-  set_hl(0, 'Whitespace', { fg = '#343434' })
-  set_hl(0, 'CursorLine', { bg = 'NONE' }) -- "transparent" == NONE
-  set_hl(0, 'NormalFloat', { bg = 'NONE' }) -- for which-key
-  set_hl(0, 'Visual', { fg = 'NONE' })
+    -- Basic UI
+    set_hl(0, 'Whitespace', { fg = '#343434' })
+    set_hl(0, 'CursorLine', { bg = 'NONE' }) -- "transparent" == NONE
+    set_hl(0, 'NormalFloat', { bg = 'NONE' }) -- for which-key
+    set_hl(0, 'StatusLine', { bg = clr.bg }) -- lualine
 
-  -- Treesitter comment variants
-  set_hl(0, '@comment.todo', { bold = true, standout = true })
-  set_hl(0, '@comment.error', { bold = true, italic = true, standout = true })
-  set_hl(0, '@comment.note', { bold = true, italic = true, standout = true })
+    -- Treesitter comment variants
+    -- set_hl(0, '@comment.todo', { bold = true, standout = true })
+    -- set_hl(0, '@comment.error', { bold = true, italic = true, standout = true })
+    -- set_hl(0, '@comment.note', { bold = true, italic = true, standout = true })
 
-  -- Syntax
-  set_hl(0, 'Keyword', { fg = clr.primary })
-  set_hl(0, 'String', { fg = clr.string, italic = true })
-  set_hl(0, '@comment', { fg = clr.comment })
+    -- Syntax
+    -- set_hl(0, 'Keyword', { fg = clr.primary })
+    -- set_hl(0, 'String', { fg = clr.string, italic = true })
+    -- set_hl(0, '@comment', { fg = clr.comment })
 
-  -- Cursor & line numbers
-  set_hl(0, 'Cursor', {
-    fg = 'black',
-    bg = clr.primary,
-  })
+    -- Cursor & line numbers
+    -- set_hl(0, 'Cursor', {
+    --   fg = 'black',
+    --   bg = clr.primary,
+    -- })
 
-  set_hl(0, 'CursorLineNr', {
-    fg = clr.primary,
-    bg = 'NONE',
-  })
+    -- set_hl(0, 'CursorLineNr', {
+    --   fg = clr.primary,
+    --   bg = 'NONE',
+    -- })
 
-  -- Cursor modes
-  set_hl(0, 'iCursor', { fg = '#66ff00', bg = '#66ff00' })
-  set_hl(0, 'vCursor', { fg = '#ff007f', bg = '#ff007f' })
-  set_hl(0, 'rCursor', { fg = '#ffffff', bg = '#ffffff' })
+    -- Cursor modes
+    set_hl(0, 'iCursor', { fg = '#66ff00', bg = '#66ff00' })
+    set_hl(0, 'vCursor', { fg = '#ff007f', bg = '#ff007f' })
+    set_hl(0, 'rCursor', { fg = '#ffffff', bg = '#ffffff' })
 
-  -- GUI cursor config (unchanged, already Lua)
-  vim.opt.guicursor = 'a:Cursor/lCursor,'
-    .. 'n-v-c-i:block,'
-    .. 'n:blinkwait700-blinkoff400-blinkon250,'
-    .. 'v-ve:vCursor,'
-    .. 'i-ci:iCursor,'
-    .. 'r-cr:rCursor,'
-    .. 'sm:block-blinkwait175-blinkoff150-blinkon175'
+    -- GUI cursor config (unchanged, already Lua)
+    vim.opt.guicursor = 'a:Cursor/lCursor,'
+      .. 'n-v-c-i:block,'
+      .. 'n:blinkwait700-blinkoff400-blinkon250,'
+      .. 'v-ve:vCursor,'
+      .. 'i-ci:iCursor,'
+      .. 'r-cr:rCursor,'
+      .. 'sm:block-blinkwait175-blinkoff150-blinkon175'
 
-  -- Lualine
-  vim.api.nvim_set_hl(0, 'StatusLine', { bg = clr.bg })
-
-  -- Fold
-  vim.api.nvim_set_hl(0, 'FoldColumn', { fg = clr.primary, bg = 'NONE' })
-  vim.api.nvim_set_hl(0, 'Folded', { fg = clr.blue, bg = 'NONE' })
-end
-
-vim.api.nvim_create_autocmd({ 'ColorScheme' }, { callback = setColors, group = vim.api.nvim_create_augroup('ColorCustomizations', { clear = true }) })
+    -- Fold
+    -- vim.api.nvim_set_hl(0, 'FoldColumn', { fg = clr.primary, bg = 'NONE' })
+    -- vim.api.nvim_set_hl(0, 'Folded', { fg = clr.blue, bg = 'NONE' })
+  end,
+  group = vim.api.nvim_create_augroup('ColorCustomizations', { clear = true }),
+})
 
 --[[ Plugins ]]
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -667,7 +665,7 @@ require('lazy').setup({
             {
               'mode',
               fmt = function()
-                return ''
+                return ''
               end,
             },
           },
