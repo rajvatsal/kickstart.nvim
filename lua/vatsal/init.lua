@@ -220,8 +220,7 @@ vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
     -- Basic UI
     set_hl(0, 'Whitespace', { fg = '#343434' })
     set_hl(0, 'CursorLine', { bg = 'NONE' }) -- "transparent" == NONE
-    set_hl(0, 'NormalFloat', { bg = 'NONE' }) -- for which-key
-    set_hl(0, 'StatusLine', { bg = clr.bg }) -- lualine
+    set_hl(0, 'NormalFloat', { bg = clr.bg }) -- for which-key
 
     -- Treesitter comment variants
     -- set_hl(0, '@comment.todo', { bold = true, standout = true })
@@ -598,6 +597,7 @@ require('lazy').setup({
         darkyellow = '#f2bb22',
         purple = '#ff007f', -- '#f542a7',
         white = '#f7f7f7',
+        black = '#181818',
       }
 
       local function getFileName(f_name)
@@ -613,45 +613,48 @@ require('lazy').setup({
         options = {
           theme = {
             normal = {
-              a = { fg = Lualine_Clrs.red, bg = 'NONE' },
-              b = { fg = Lualine_Clrs.darkgrey, bg = 'NONE' },
-              c = { fg = Lualine_Clrs.white, bg = 'NONE' },
-              x = { fg = Lualine_Clrs.darkgrey_700, bg = 'NONE' },
-              y = { fg = Lualine_Clrs.white, bg = 'NONE' },
-              z = { fg = Lualine_Clrs.white, bg = 'NONE' },
+              a = { fg = Lualine_Clrs.red, bg = Lualine_Clrs.black },
+              b = { fg = Lualine_Clrs.darkgrey, bg = Lualine_Clrs.black },
+              c = { fg = Lualine_Clrs.white, bg = Lualine_Clrs.black },
+              x = { fg = Lualine_Clrs.darkgrey_700, bg = Lualine_Clrs.black },
+              y = { bg = Lualine_Clrs.black },
+              z = { fg = Lualine_Clrs.white, bg = Lualine_Clrs.black },
             },
 
             insert = {
-              a = { fg = Lualine_Clrs.green, bg = 'NONE' },
-              b = { fg = Lualine_Clrs.darkgrey, bg = 'NONE' },
-              c = { fg = Lualine_Clrs.white, bg = 'NONE' },
-              x = { fg = Lualine_Clrs.darkgrey_700, bg = 'NONE' },
-              y = { fg = Lualine_Clrs.white, bg = 'NONE' },
-              z = { fg = Lualine_Clrs.green, bg = 'NONE' },
+              a = { fg = Lualine_Clrs.green, bg = Lualine_Clrs.black },
+              b = { fg = Lualine_Clrs.darkgrey, bg = Lualine_Clrs.black },
+              c = { fg = Lualine_Clrs.white, bg = Lualine_Clrs.black },
+              x = { fg = Lualine_Clrs.darkgrey_700, bg = Lualine_Clrs.black },
+              y = { bg = Lualine_Clrs.black },
+              z = { fg = Lualine_Clrs.green, bg = Lualine_Clrs.black },
             },
 
             visual = {
-              a = { fg = Lualine_Clrs.purple, bg = 'NONE' },
-              b = { fg = Lualine_Clrs.purple, bg = 'NONE' },
-              c = { fg = Lualine_Clrs.white, bg = 'NONE' },
-              x = { fg = Lualine_Clrs.darkgrey_700, bg = 'NONE' },
-              y = { fg = Lualine_Clrs.white, bg = 'NONE' },
-              z = { fg = Lualine_Clrs.purple, bg = 'NONE' },
+              a = { fg = Lualine_Clrs.purple, bg = Lualine_Clrs.black },
+              b = { fg = Lualine_Clrs.purple, bg = Lualine_Clrs.black },
+              c = { fg = Lualine_Clrs.white, bg = Lualine_Clrs.black },
+              x = { fg = Lualine_Clrs.darkgrey_700, bg = Lualine_Clrs.black },
+              y = { bg = Lualine_Clrs.black },
+              z = { fg = Lualine_Clrs.purple, bg = Lualine_Clrs.black },
             },
 
             command = {
-              a = { fg = Lualine_Clrs.white, bg = 'NONE' },
-              b = { fg = Lualine_Clrs.darkgrey_700, bg = 'NONE' },
-              c = { fg = Lualine_Clrs.white, bg = 'NONE' },
-              x = { fg = Lualine_Clrs.darkgrey_700, bg = 'NONE' },
-              y = { fg = Lualine_Clrs.white, bg = 'NONE' },
-              z = { fg = 'black', bg = 'white' },
+              a = { fg = Lualine_Clrs.darkgrey_700, bg = Lualine_Clrs.black },
+              b = { fg = Lualine_Clrs.darkgrey_700, bg = Lualine_Clrs.black },
+              c = { fg = Lualine_Clrs.white, bg = Lualine_Clrs.black },
+              x = { fg = Lualine_Clrs.darkgrey_700, bg = Lualine_Clrs.black },
+              y = { bg = Lualine_Clrs.black },
+              z = { fg = Lualine_Clrs.black, bg = Lualine_Clrs.white },
             },
 
             inactive = {
-              a = { fg = Lualine_Clrs.darkgrey, bg = 'NONE' },
-              b = { fg = Lualine_Clrs.darkgrey, bg = 'NONE' },
-              c = { fg = Lualine_Clrs.darkgrey, bg = 'NONE' },
+              a = { fg = Lualine_Clrs.darkgrey, bg = Lualine_Clrs.black },
+              b = { fg = Lualine_Clrs.darkgrey, bg = Lualine_Clrs.black },
+              c = { fg = Lualine_Clrs.darkgrey, bg = Lualine_Clrs.black },
+              x = { fg = Lualine_Clrs.darkgrey_700, bg = Lualine_Clrs.black },
+              y = { bg = Lualine_Clrs.black },
+              z = { fg = Lualine_Clrs.white, bg = Lualine_Clrs.black },
             },
           },
           disabled_filetypes = { 'NvimTree' },
@@ -679,22 +682,22 @@ require('lazy').setup({
             { 'branch' },
           },
           lualine_c = {},
-          lualine_x = { { 'diagnostics', count = false, color = { bg = 'NONE' } } },
+          lualine_x = { { 'diagnostics', count = false } },
           lualine_y = {
             {
               'diff',
               colored = true, -- Displays a colored diff status if set to true
               diff_color = {
-                removed = 'red',
-                add = 'green',
-                modified = 'orange',
+                add = 'LuaLineDiffAdd', -- Changes the diff's added color
+                modify = 'LuaLineDiffChange', -- Changes the diff's modified color
+                remove = 'LuaLineDiffDelete', -- Changes the diff's removed color you
               },
-              symbols = { added = '', modified = '', removed = '-' },
+              symbols = { added = '+', modified = '~', removed = '-' },
             },
           },
           lualine_z = {
-            { 'progress', color = { bg = 'NONE', gui = 'bold' }, separator = '' },
-            { 'location', color = { bg = 'NONE', gui = 'bold' } },
+            { 'progress', separator = '' },
+            { 'location' },
           },
         },
         tabline = {
