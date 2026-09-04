@@ -174,6 +174,11 @@ kmap('n', '<leader>kb', function()
   end)
 end, { noremap = true, desc = '[K]eymap To Run [B]ash Commands' })
 
+kmap({ 'n' }, '<C-W>m', function()
+  vim.cmd 'vert res'
+  vim.cmd 'res'
+end, { desc = '[M]aximize current window', noremap = true })
+
 --
 -- [[ Auto Commands ]]
 --
@@ -531,7 +536,7 @@ require('lazy').setup({
           nls.formatting.prettierd,
           nls.formatting.clang_format.with(clang),
           nls.formatting.black,
-          require 'none-ls.diagnostics.eslint_d',
+          -- require 'none-ls.diagnostics.eslint_d',
         },
       }
     end,
